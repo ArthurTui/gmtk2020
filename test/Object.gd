@@ -7,5 +7,6 @@ func _ready():
 
 func get_sprite():
 	var max_n = 5
+	randomize()
 	var n = randi()%(max_n - 1) + 1
 	return load("res://assets/n/n" + str(n) + ".jpg")
