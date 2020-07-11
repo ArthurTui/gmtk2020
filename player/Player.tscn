@@ -17,5 +17,14 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
+[node name="HP" type="Label" parent="."]
+margin_left = -30.7728
+margin_top = 35.2182
+margin_right = 32.2272
+margin_bottom = 54.2182
+text = "gambino"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

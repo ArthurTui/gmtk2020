@@ -4,18 +4,19 @@ onready var status_node = $StatusNode
 
 const ACCELERATION_FACTOR = .1
 const FRICTION_FACTOR = .5
+const MAX_HP = 100
 const SPEED = 400
 const STATUS = {
 	"speed_up": preload("res://status/debuffs/SpeedUp.tscn"),
 	"petrify": preload("res://status/debuffs/Petrify.tscn"),
 }
-
 var movement = Vector2.ZERO
 var stunned = false
+var hp
 
 
 func _ready():
-	pass # Replace with function body.
+	hp = MAX_HP
 
 
 func _unhandled_input(event):
@@ -54,6 +55,20 @@ func move(new_movement:Vector2):
 		movement = lerp(movement, new_movement, FRICTION_FACTOR)
 	
 	movement = move_and_slide(movement)
+
+func heal(amount: int):
+	hp = min(hp + amount, MAX_HP)
+	$HP.text = str(hp)
+
+func take_damage(amount: int):
+	hp = max(hp - amount, 0)
+	$HP.text = str(hp)
+	
+	if hp <= 0:
+		die()
+
+func die():
+	queue_free()
 
 func stun(duration: float):
 	if stunned:

@@ -6,3 +6,4 @@
 [node name="Petrify" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 type = 2
+stun_duration = 3.0
