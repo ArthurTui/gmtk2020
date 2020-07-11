@@ -84,12 +84,14 @@ func is_stunned() -> bool:
 
 
 func add_status(type:int):
-	assert(type != Status.TYPES.NONE)
+	if has_status[type]:
+		return
+	
+	assert(type != Status.TYPES.NONE, "Status type can't be NONE")
 	var status : Status = STATUS[type].instance()
 	has_status[status.type] = true
-# warning-ignore:return_value_discarded
-	status.connect("finished", self, "remove_status", [status])
 	
+	status.connect("finished", self, "remove_status", [status])
 	status_node.add_child(status)
 
 
