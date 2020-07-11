@@ -10,7 +10,8 @@ const STATUS = [null,
 		preload("res://status/debuffs/SpeedUp.tscn"),
 		preload("res://status/debuffs/Petrify.tscn"),
 		preload("res://status/debuffs/Burning.tscn"),
-		preload("res://status/debuffs/Slippery.tscn")]
+		preload("res://status/debuffs/Slippery.tscn"),
+		preload("res://status/debuffs/Confused.tscn")]
 
 var movement := Vector2.ZERO
 var stunned := false
@@ -36,6 +37,8 @@ func _unhandled_input(event):
 		add_status(Status.TYPES.BURNING)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_4:
 		add_status(Status.TYPES.SLIPPERY)
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_5:
+		add_status(Status.TYPES.CONFUSED)
 
 
 func _physics_process(dt):
@@ -60,6 +63,9 @@ func get_input_movement() -> Vector2:
 	if Input.is_action_pressed("player_right"):
 		move_vec += Vector2(1, 0)
 	
+	if has_status[Status.TYPES.CONFUSED]:
+		move_vec *= -1
+
 	move_vec = move_vec.normalized() * SPEED
 	
 	return move_vec
