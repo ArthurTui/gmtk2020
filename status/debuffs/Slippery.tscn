@@ -5,5 +5,5 @@
 
 [node name="Slippery" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-duration = 2.0
+duration = 5.0
 type = 4

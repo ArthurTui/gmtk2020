@@ -12,5 +12,9 @@ export(TYPES) var type = 0
 func _ready():
 	if duration:
 		yield(get_tree().create_timer(duration), "timeout")
-		emit_signal("finished")
-		queue_free()
+		finish()
+
+
+func finish():
+	emit_signal("finished")
+	queue_free()

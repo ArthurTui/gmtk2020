@@ -34,6 +34,8 @@ func _unhandled_input(event):
 		add_status(Status.TYPES.PETRIFY)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_3:
 		add_status(Status.TYPES.BURNING)
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_4:
+		add_status(Status.TYPES.SLIPPERY)
 
 
 func _physics_process(dt):
@@ -64,13 +66,19 @@ func get_input_movement() -> Vector2:
 
 
 func move(new_movement:Vector2):
+	var acc_factor = ACCELERATION_FACTOR
+	var fric_factor = FRICTION_FACTOR
+	
 	if has_status[Status.TYPES.SPEEDUP]:
-		movement = status_array[Status.TYPES.SPEEDUP].move(movement,
-				new_movement)
-	elif new_movement != Vector2.ZERO:
-		movement = lerp(movement, new_movement, ACCELERATION_FACTOR)
+		new_movement *= status_array[Status.TYPES.SPEEDUP].speed_multiplier
+	if has_status[Status.TYPES.SLIPPERY]:
+		acc_factor = status_array[Status.TYPES.SLIPPERY].acceleration_factor
+		fric_factor = status_array[Status.TYPES.SLIPPERY].friction_factor
+	
+	if new_movement != Vector2.ZERO:
+		movement = lerp(movement, new_movement, acc_factor)
 	else:
-		movement = lerp(movement, new_movement, FRICTION_FACTOR)
+		movement = lerp(movement, new_movement, fric_factor)
 	
 	movement = move_and_slide(movement)
 
