@@ -13,6 +13,16 @@ extents = Vector2( 10, 300 )
 [node name="Test" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -144.326
+margin_top = -208.47
+margin_right = 1225.67
+margin_bottom = 871.53
+color = Color( 0.443137, 0.443137, 0.443137, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 444, 258 )
 
