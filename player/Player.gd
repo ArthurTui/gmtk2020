@@ -5,8 +5,13 @@ onready var status_node = $StatusNode
 const SPEED = 4000
 const FRICTION_SPEED = 8000
 const MAX_SPEED = 400
+const STATUS = {
+	"speed_up": preload("res://status/debuffs/SpeedUp.tscn"),
+	"petrify": preload("res://status/debuffs/Petrify.tscn"),
+}
 
 var movement = Vector2()
+var stunned = false
 
 
 func _ready():
@@ -15,11 +20,16 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed and event.scancode == KEY_1:
-		var speed_up = load("res://status/debuffs/SpeedUp.tscn")
-		status_node.add_child(speed_up.instance())
+		add_status("speed_up")
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_2:
+		add_status("petrify")
 
 
 func _physics_process(delta):
+	
+	if stunned:
+		return
+
 	var move_vec = Vector2()
 	if Input.is_action_pressed("player_down"):
 		move_vec += Vector2(0,1)
@@ -56,13 +66,29 @@ func apply_friction(acceleration):
 	else:
 		movement = Vector2()
 
+func stun(duration: float):
+	if stunned:
+		return
+
+	stunned = true
+	yield(get_tree().create_timer(duration), "timeout")
+	stunned = false
+
+
+func add_status(name: String):
+	var status = STATUS[name].instance()
+	
+	var signals = status.get_signal_list()
+	if signals.has("stun"):
+		status.connect("stun", self, "stun")
+
+	status_node.add_child(status)
 
 func has_status(status:int) -> bool:
 	for s in status_node.get_children():
 		if s.type == status:
 			return true
 	return false
-
 
 func get_status(status:int) -> Status:
 	for s in status_node.get_children():
