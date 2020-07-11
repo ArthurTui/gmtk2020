@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/n.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/n/n.jpg" type="Texture" id=1]
+[ext_resource path="res://test/Object.gd" type="Script" id=2]
 
 [node name="Object" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.227769, 0.208277 )
