@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/n/n.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/n/n1.jpg" type="Texture" id=1]
 [ext_resource path="res://test/Object.gd" type="Script" id=2]
 
 [node name="Object" type="Node2D"]
