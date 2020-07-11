@@ -51,3 +51,10 @@ func has_status(status:int) -> bool:
 		if s.type == status:
 			return true
 	return false
+
+
+func get_status(status:int) -> Status:
+	for s in status_array:
+		if s.type == status:
+			return s
+	return null
