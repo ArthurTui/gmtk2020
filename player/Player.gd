@@ -59,7 +59,10 @@ func get_input_movement() -> Vector2:
 
 
 func move(new_movement:Vector2):
-	if new_movement != Vector2.ZERO:
+	if has_status[Status.TYPES.SPEEDUP]:
+		movement = status_array[Status.TYPES.SPEEDUP].move(movement,
+				new_movement)
+	elif new_movement != Vector2.ZERO:
 		movement = lerp(movement, new_movement, ACCELERATION_FACTOR)
 	else:
 		movement = lerp(movement, new_movement, FRICTION_FACTOR)
