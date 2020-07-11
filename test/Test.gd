@@ -40,20 +40,12 @@ func random_valid_position():
 						   $Walls/StaticBody2D4.position.x - $Player.get_width()/2)
 		pos.y = rand_range($Walls/StaticBody2D.position.y + $Player.get_height()/2,
 						   $Walls/StaticBody2D2.position.y - $Player.get_height()/2)
-
-		#Check if position doesn't collide with any obstacles
-		var valid = true
-		var margin = 10
-		for object in $Objects.get_children():
-			if object.position.x - object.get_width()/2 - margin < $Player.position.x + $Player.get_width()/2 and \
-			   object.position.x + object.get_width()/2 + margin > $Player.position.x - $Player.get_width()/2 and \
-			   object.position.y - object.get_height()/2 - margin < $Player.position.y + $Player.get_height()/2 and \
-			   object.position.y + object.get_height()/2 + margin > $Player.position.y - $Player.get_height()/2:
-				#Collided with an object
-				valid = false
-				break
-		if valid:
+		
+		var transform = Transform2D()
+		transform.translated(pos)
+		if not $Player.test_move(transform, Vector2()):
 			break
+
 	#Teleport player
 	$Player.position = pos
 
