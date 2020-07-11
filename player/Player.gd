@@ -17,6 +17,7 @@ var hp
 
 func _ready():
 	hp = MAX_HP
+	$HP.text = str(hp)
 
 
 func _unhandled_input(event):
