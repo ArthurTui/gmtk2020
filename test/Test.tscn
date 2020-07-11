@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test/Object.tscn" type="PackedScene" id=2]
 [ext_resource path="res://test/Test.gd" type="Script" id=3]
-[ext_resource path="res://test/buraconegroshapekey.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 10 )
@@ -93,25 +92,3 @@ custom_constants/separation = 4
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-light_mask = 0
-margin_right = 300.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 100, 100 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 100, 100 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-
-[node name="buraconegroshapekey" parent="ViewportContainer/Viewport" instance=ExtResource( 4 )]
-
-[node name="Camera" type="Camera" parent="ViewportContainer/Viewport"]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0.43756, 0 )
-current = true
-fov = 133.7
