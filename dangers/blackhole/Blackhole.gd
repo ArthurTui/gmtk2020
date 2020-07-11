@@ -3,10 +3,6 @@ extends Node2D
 export var pull_force := 5000
 
 
-func _ready():
-	pass
-
-
 func pull_player(movement:Vector2, player_pos:Vector2) -> Vector2:
 	var pull_direction = (global_position - player_pos).normalized()
 	pull_direction *= (1 / global_position.distance_to(player_pos)) * pull_force
