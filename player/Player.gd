@@ -113,3 +113,11 @@ func remove_status(status:Status):
 	has_status[status.type] = false
 	status_array[status.type] = null
 	status_node.remove_child(status)
+	
+	
+func add_camera_bounds(left:int, right:int, bottom:int, top:int):
+	$Camera2D.limit_left = left
+	$Camera2D.limit_right = right	
+	$Camera2D.limit_bottom = bottom
+	$Camera2D.limit_top = top
+	
