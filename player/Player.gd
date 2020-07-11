@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-onready var statuses = $StatusNode.get_children()
+onready var status_array = $StatusNode.get_children()
 
 const SPEED = 4000
 const FRICTION_SPEED = 8000
@@ -12,11 +12,8 @@ var movement = Vector2()
 func _ready():
 	pass # Replace with function body.
 
-func _input(event):
-	if event.is_action_pressed("player_left"):
-		add_child(AudioManager.get_sfx("test1"))
 
-func _process(delta):
+func _physics_process(delta):
 	var move_vec = Vector2()
 	if Input.is_action_pressed("player_down"):
 		move_vec += Vector2(0,1)
@@ -47,3 +44,10 @@ func apply_friction(acceleration):
 		movement -= movement.normalized() * acceleration
 	else:
 		movement = Vector2()
+
+
+func has_status(status:int) -> bool:
+	for s in status_array:
+		if s.type == status:
+			return true
+	return false
