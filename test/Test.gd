@@ -10,16 +10,16 @@ extends Node2D
 func _ready():
 	
 	#TOP
-	var top = $Walls/StaticBody2D.position.y
+	var top = $Scenario/TopWall.rect_position.y
 	
 	#Bottom
-	var bottom = $Walls/StaticBody2D2.position.y
+	var bottom = $Scenario/BottomWall.rect_position.y + $Scenario/BottomWall.rect_size.x
 
 	#Left
-	var left = $Walls/StaticBody2D3.position.x
+	var left = $Scenario/LeftWall.rect_position.x
 	
 	#Right
-	var right = $Walls/StaticBody2D4.position.x
+	var right = $Scenario/RightWall.rect_position.x + $Scenario/RightWall.rect_size.x
 		
 	$Player.add_camera_bounds(left, right, bottom, top)
 	

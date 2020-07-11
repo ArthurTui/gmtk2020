@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/debuff_run.wav-3e4ba7c7f798520b2d638b9722a5445f.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/debuff_run.wav"
+dest_files=[ "res://.import/debuff_run.wav-3e4ba7c7f798520b2d638b9722a5445f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
