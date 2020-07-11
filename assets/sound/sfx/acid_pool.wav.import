@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/acid_pool.wav-a12eeba7d2307eb604e99bc386ed4ea6.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/acid_pool.wav"
+dest_files=[ "res://.import/acid_pool.wav-a12eeba7d2307eb604e99bc386ed4ea6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

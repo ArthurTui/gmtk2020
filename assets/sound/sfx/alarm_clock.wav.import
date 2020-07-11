@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/alarm_clock.wav-57cb2eb1ab1b1bccb42dd41e184f0daa.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/alarm_clock.wav"
+dest_files=[ "res://.import/alarm_clock.wav-57cb2eb1ab1b1bccb42dd41e184f0daa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

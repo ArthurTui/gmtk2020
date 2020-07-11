@@ -56,6 +56,7 @@ smoothing_enabled = true
 smoothing_speed = 15.0
 
 [node name="Vision" type="Node2D" parent="."]
+visible = false
 
 [node name="VisionCone" type="LightOccluder2D" parent="Vision"]
 position = Vector2( 13.3391, 13.4409 )

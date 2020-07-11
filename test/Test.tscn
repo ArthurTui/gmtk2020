@@ -4,7 +4,7 @@
 [ext_resource path="res://test/Object.tscn" type="PackedScene" id=2]
 [ext_resource path="res://test/Test.gd" type="Script" id=3]
 [ext_resource path="res://dangers/iron_spikes/IronSpikes.tscn" type="PackedScene" id=4]
-[ext_resource path="res://dangers/blackhole/Blackhole.tscn" type="PackedScene" id=5]
+[ext_resource path="res://dangers/lava/Lava.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 10 )
@@ -35,8 +35,13 @@ scale = Vector2( 0.351099, 0.352814 )
 position = Vector2( 749.805, 127.961 )
 scale = Vector2( 0.351099, 0.352814 )
 
-[node name="Blackhole" parent="Dangers" instance=ExtResource( 5 )]
-position = Vector2( 793.379, 419.013 )
+[node name="Lava" parent="Dangers" instance=ExtResource( 5 )]
+position = Vector2( 293.668, 701.208 )
+scale = Vector2( 0.407056, 0.403734 )
+
+[node name="Lava2" parent="Dangers" instance=ExtResource( 5 )]
+position = Vector2( 599.323, 701.208 )
+scale = Vector2( 0.407056, 0.403734 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 38.956, 68.9221 )
