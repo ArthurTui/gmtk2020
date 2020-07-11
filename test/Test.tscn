@@ -40,25 +40,29 @@ position = Vector2( 898.896, 518.913 )
 [node name="Walls" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
-position = Vector2( 512, 0 )
+position = Vector2( 530.989, -207.324 )
+scale = Vector2( 1.33381, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
 shape = SubResource( 1 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
-position = Vector2( 512, 600 )
+position = Vector2( 540.472, 845.488 )
+scale = Vector2( 1.32, 1.00353 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
 shape = SubResource( 1 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
-position = Vector2( 0, 300 )
+position = Vector2( -144.038, 321.449 )
+scale = Vector2( 0.894677, 1.79902 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
 shape = SubResource( 2 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
-position = Vector2( 1024, 300 )
+position = Vector2( 1219.19, 319.754 )
+scale = Vector2( 1, 1.8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
 shape = SubResource( 2 )
