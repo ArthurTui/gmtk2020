@@ -4,5 +4,4 @@
 
 [node name="SpeedUp" type="Node"]
 script = ExtResource( 1 )
-duration = 2.0
 type = 1

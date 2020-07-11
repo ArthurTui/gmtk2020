@@ -15,3 +15,9 @@ func get_sprite():
 	randomize()
 	var n = randi()%(max_n - 1) + 1
 	return load("res://assets/n/n" + str(n) + ".jpg")
+
+func get_width():
+	return BASE_WIDTH * scale.x
+
+func get_height():
+	return BASE_HEIGHT * scale.y

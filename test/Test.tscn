@@ -16,27 +16,29 @@ script = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 444, 258 )
 
-[node name="Object" parent="." instance=ExtResource( 2 )]
+[node name="Objects" type="Node" parent="."]
+
+[node name="Object" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 197.588, 44.6476 )
 scale = Vector2( 1.2, 0.5 )
 
-[node name="Object2" parent="." instance=ExtResource( 2 )]
+[node name="Object2" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 64.149, 281.046 )
 scale = Vector2( 0.6, 1.2 )
 
-[node name="Object3" parent="." instance=ExtResource( 2 )]
+[node name="Object3" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 174.395, 534.977 )
 scale = Vector2( 1.7, 0.7 )
 
-[node name="Object4" parent="." instance=ExtResource( 2 )]
+[node name="Object4" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 532.265, 63.1474 )
 scale = Vector2( 1.5, 0.8 )
 
-[node name="Object5" parent="." instance=ExtResource( 2 )]
+[node name="Object5" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 942.623, 113.601 )
 scale = Vector2( 1, 1.6 )
 
-[node name="Object6" parent="." instance=ExtResource( 2 )]
+[node name="Object6" parent="Objects" instance=ExtResource( 2 )]
 position = Vector2( 898.896, 518.913 )
 
 [node name="Walls" type="Node" parent="."]
@@ -68,3 +70,15 @@ scale = Vector2( 1, 1.8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
 shape = SubResource( 2 )
+
+[node name="DebugHUD" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugHUD"]
+margin_left = 17.6389
+margin_top = 20.1587
+margin_right = 206.639
+margin_bottom = 483.159
+custom_constants/separation = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+signal teleport
+signal add_status
+signal remove_status
+
 onready var status_node = $StatusNode
 
 const ACCELERATION_FACTOR = .1
@@ -32,19 +36,21 @@ func _ready():
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed and event.scancode == KEY_1:
-		add_status(Status.TYPES.SPEEDUP)
+		toggle_status(Status.TYPES.SPEEDUP)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_2:
-		add_status(Status.TYPES.PETRIFY)
+		toggle_status(Status.TYPES.PETRIFY)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_3:
-		add_status(Status.TYPES.BURNING)
+		toggle_status(Status.TYPES.BURNING)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_4:
-		add_status(Status.TYPES.SLIPPERY)
+		toggle_status(Status.TYPES.SLIPPERY)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_5:
-		add_status(Status.TYPES.CONFUSED)
+		toggle_status(Status.TYPES.CONFUSED)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_6:
-		add_status(Status.TYPES.SPEEDDOWN)
+		toggle_status(Status.TYPES.SPEEDDOWN)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_7:
-		add_status(Status.TYPES.BLEEDING)
+		toggle_status(Status.TYPES.BLEEDING)
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_8:
+		emit_signal("teleport")
 
 
 func _physics_process(dt):
@@ -98,6 +104,11 @@ func move(new_movement:Vector2):
 		take_damage(status_array[Status.TYPES.BLEEDING].damage * movement.length())
 	movement = move_and_slide(movement)
 
+func get_width():
+	return $CollisionShape2D.shape.extents.x * 2
+
+func get_height():
+	return $CollisionShape2D.shape.extents.y * 2
 
 func heal(amount: float):
 	hp = min(hp + amount, MAX_HP)
@@ -132,13 +143,24 @@ func add_status(type:int):
 	status.connect("finished", self, "remove_status", [status])
 	status_node.add_child(status)
 	status_array[type] = status
+	
+	#DEBUG
+	emit_signal("add_status", status.name)
 
 func remove_status(status:Status):
 	has_status[status.type] = false
 	status_array[status.type] = null
 	status_node.remove_child(status)
 	
+	#DEBUG
+	emit_signal("remove_status", status.name)
 	
+func toggle_status(status_type: int):
+	if not has_status[status_type]:
+		add_status(status_type)
+	else:
+		remove_status(status_array[status_type])
+
 func add_camera_bounds(left:int, right:int, bottom:int, top:int):
 	$Camera2D.limit_left = left
 	$Camera2D.limit_right = right	
