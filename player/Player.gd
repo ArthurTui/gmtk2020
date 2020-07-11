@@ -12,6 +12,9 @@ var movement = Vector2()
 func _ready():
 	pass # Replace with function body.
 
+func _input(event):
+	if event.is_action_pressed("player_left"):
+		add_child(AudioManager.get_sfx("test1"))
 
 func _process(delta):
 	var move_vec = Vector2()
