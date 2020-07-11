@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/3d/Material.material" type="Material" id=1]
 [ext_resource path="res://dangers/blackhole/Blackhole.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 350, 220 )
-
-[sub_resource type="ArrayMesh" id=2]
+[sub_resource type="ArrayMesh" id=1]
 blend_shape_mode = 0
 blend_shape/names = PoolStringArray( "Key 1" )
 blend_shape/mode = 0
@@ -23,7 +20,7 @@ surfaces/0 = {
 "vertex_count": 4480
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 5.0
 loop = true
 tracks/0/type = "transform"
@@ -46,13 +43,13 @@ tracks/1/keys = {
 "values": [ 0.0, 1.0 ]
 }
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 350, 220 )
+
+[sub_resource type="CircleShape2D" id=4]
+
 [node name="Blackhole" type="Node2D"]
 script = ExtResource( 2 )
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 light_mask = 0
@@ -75,17 +72,28 @@ render_target_update_mode = 3
 [node name="buraconegroshapekey" type="Spatial" parent="ViewportContainer/Viewport"]
 
 [node name="Sphere" type="MeshInstance" parent="ViewportContainer/Viewport/buraconegroshapekey"]
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 "blend_shapes/Key 1" = 0.0
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ViewportContainer/Viewport/buraconegroshapekey"]
 autoplay = "SphereAction"
-anims/SphereAction = SubResource( 3 )
+anims/SphereAction = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="ViewportContainer/Viewport"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0.43756, 0 )
 current = true
 fov = 133.7
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+
+[node name="PullArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullArea"]
+shape = SubResource( 3 )
+
+[node name="DeathArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
+shape = SubResource( 4 )
+[connection signal="body_entered" from="PullArea" to="." method="_on_PullArea_body_entered"]
+[connection signal="body_exited" from="PullArea" to="." method="_on_PullArea_body_exited"]
+[connection signal="body_entered" from="DeathArea" to="." method="_on_DeathArea_body_entered"]

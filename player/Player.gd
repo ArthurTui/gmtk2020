@@ -195,8 +195,8 @@ func add_camera_bounds(left:int, right:int, bottom:int, top:int):
 	$Camera2D.limit_top = top
 
 
-func blackhole_area_entered(blackhole):
-	self.blackhole = blackhole
+func blackhole_area_entered(bhole):
+	blackhole = bhole
 
 
 func blackhole_area_exited():
