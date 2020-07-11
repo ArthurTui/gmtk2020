@@ -1,13 +1,17 @@
 extends KinematicBody2D
 
+onready var statuses = $StatusNode.get_children()
+
 const SPEED = 4000
 const FRICTION_SPEED = 8000
 const MAX_SPEED = 400
 
 var movement = Vector2()
 
+
 func _ready():
 	pass # Replace with function body.
+
 
 func _process(delta):
 	var move_vec = Vector2()
@@ -29,9 +33,11 @@ func _process(delta):
 	
 	movement = move_and_slide(movement)
 
+
 func apply_movement(acceleration):
 	movement += acceleration
 	movement = movement.clamped(MAX_SPEED)
+
 
 func apply_friction(acceleration):
 	if movement.length() > acceleration:
