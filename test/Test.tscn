@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://test/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://test/Object.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 300 )
 
 [node name="Test" type="Node2D"]
 
@@ -30,3 +36,29 @@ scale = Vector2( 1, 1.6 )
 
 [node name="Object6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 898.896, 518.913 )
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+position = Vector2( 512, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+position = Vector2( 512, 600 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
+position = Vector2( 0, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
+shape = SubResource( 2 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
+position = Vector2( 1024, 300 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
+shape = SubResource( 2 )
