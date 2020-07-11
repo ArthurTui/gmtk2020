@@ -18,7 +18,8 @@ const STATUS = [null,
 		preload("res://status/debuffs/Slippery.tscn"),
 		preload("res://status/debuffs/Confused.tscn"),
 		preload("res://status/debuffs/SpeedDown.tscn"),
-		preload("res://status/debuffs/Bleeding.tscn")]
+		preload("res://status/debuffs/Bleeding.tscn"),
+		preload("res://status/debuffs/AcidBurning.tscn")]
 
 var movement := Vector2.ZERO
 var has_status := []
@@ -65,6 +66,9 @@ func _physics_process(dt):
 	if has_status[Status.TYPES.BURNING]:
 		var burn = status_array[Status.TYPES.BURNING]
 		take_damage(burn.damage * dt)
+	if has_status[Status.TYPES.ACIDBURNING]:
+		var acidburn = status_array[Status.TYPES.ACIDBURNING]
+		take_damage(acidburn.damage * dt)
 	
 	if $Vision.visible:
 		update_vision_cone()
