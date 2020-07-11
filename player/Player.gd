@@ -21,7 +21,7 @@ var hp : float
 
 func _ready():
 	hp = MAX_HP
-	$HP.text = str(hp)
+	$HP.text = str(ceil(hp))
 	for i in Status.TYPES.size():
 		has_status.append(false)
 		status_array.append(null)
@@ -83,14 +83,14 @@ func move(new_movement:Vector2):
 	movement = move_and_slide(movement)
 
 
-func heal(amount: int):
+func heal(amount: float):
 	hp = min(hp + amount, MAX_HP)
-	$HP.text = str(hp)
+	$HP.text = str(ceil(hp))
 
 
-func take_damage(amount: int):
+func take_damage(amount: float):
 	hp = max(hp - amount, 0)
-	$HP.text = str(hp)
+	$HP.text = str(ceil(hp))
 	
 	if hp <= 0:
 		die()
