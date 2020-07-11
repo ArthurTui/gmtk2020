@@ -9,7 +9,8 @@ const SPEED = 400
 const STATUS = [null,
 		preload("res://status/debuffs/SpeedUp.tscn"),
 		preload("res://status/debuffs/Petrify.tscn"),
-		preload("res://status/debuffs/Burning.tscn")]
+		preload("res://status/debuffs/Burning.tscn"),
+		preload("res://status/debuffs/Slippery.tscn")]
 
 var movement := Vector2.ZERO
 var stunned := false
@@ -99,6 +100,7 @@ func add_status(type:int):
 	var status : Status = STATUS[type].instance()
 	has_status[status.type] = true
 	
+# warning-ignore:return_value_discarded
 	status.connect("finished", self, "remove_status", [status])
 	status_node.add_child(status)
 	status_array[type] = status
