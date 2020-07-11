@@ -12,7 +12,8 @@ const STATUS = [null,
 		preload("res://status/debuffs/Burning.tscn"),
 		preload("res://status/debuffs/Slippery.tscn"),
 		preload("res://status/debuffs/Confused.tscn"),
-		preload("res://status/debuffs/SpeedDown.tscn")]
+		preload("res://status/debuffs/SpeedDown.tscn"),
+		preload("res://status/debuffs/Bleeding.tscn")]
 
 var movement := Vector2.ZERO
 var stunned := false
@@ -42,6 +43,8 @@ func _unhandled_input(event):
 		add_status(Status.TYPES.CONFUSED)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_6:
 		add_status(Status.TYPES.SPEEDDOWN)
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_7:
+		add_status(Status.TYPES.BLEEDING)
 
 
 func _physics_process(dt):
@@ -91,6 +94,8 @@ func move(new_movement:Vector2):
 	else:
 		movement = lerp(movement, new_movement, fric_factor)
 	
+	if has_status[Status.TYPES.BLEEDING]:
+		take_damage(status_array[Status.TYPES.BLEEDING].damage * movement.length())
 	movement = move_and_slide(movement)
 
 
