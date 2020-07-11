@@ -51,6 +51,8 @@ func _unhandled_input(event):
 		toggle_status(Status.TYPES.BLEEDING)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_8:
 		emit_signal("teleport")
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_9:
+		toggle_vision_cone()
 
 
 func _physics_process(dt):
@@ -63,6 +65,8 @@ func _physics_process(dt):
 		var burn = status_array[Status.TYPES.BURNING]
 		take_damage(burn.damage * dt)
 
+func toggle_vision_cone():
+	$Vision.visible = not $Vision.visible
 
 func get_input_movement() -> Vector2:
 	var move_vec = Vector2.ZERO
