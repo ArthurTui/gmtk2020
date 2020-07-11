@@ -3,7 +3,7 @@ class_name Status
 
 signal finished
 
-enum TYPES {NONE, SPEEDUP, PETRIFY}
+enum TYPES {NONE, SPEEDUP, PETRIFY, BURNING}
 
 export var duration := 0.0
 export(TYPES) var type = 0

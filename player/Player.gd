@@ -8,7 +8,8 @@ const MAX_HP = 100
 const SPEED = 400
 const STATUS = [null,
 		preload("res://status/debuffs/SpeedUp.tscn"),
-		preload("res://status/debuffs/Petrify.tscn")]
+		preload("res://status/debuffs/Petrify.tscn"),
+		preload("res://status/debuffs/Burning.tscn")]
 
 var movement := Vector2.ZERO
 var stunned := false
@@ -28,6 +29,8 @@ func _unhandled_input(event):
 		add_status(Status.TYPES.SPEEDUP)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_2:
 		add_status(Status.TYPES.PETRIFY)
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_3:
+		add_status(Status.TYPES.BURNING)
 
 
 func _physics_process(_delta):
