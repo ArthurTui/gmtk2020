@@ -14,6 +14,7 @@ const STATUS = [null,
 var movement := Vector2.ZERO
 var stunned := false
 var has_status := []
+var status_array := []
 var hp
 
 
@@ -22,6 +23,7 @@ func _ready():
 	$HP.text = str(hp)
 	for i in Status.TYPES.size():
 		has_status.append(false)
+		status_array.append(null)
 
 
 func _unhandled_input(event):
@@ -96,15 +98,10 @@ func add_status(type:int):
 	
 	status.connect("finished", self, "remove_status", [status])
 	status_node.add_child(status)
-
-
-func get_status(type:int) -> Status:
-	for s in status_node.get_children():
-		if s.type == type:
-			return s
-	return null
+	status_array[type] = status
 
 
 func remove_status(status:Status):
 	has_status[status.type] = false
+	status_array[status.type] = null
 	status_node.remove_child(status)
