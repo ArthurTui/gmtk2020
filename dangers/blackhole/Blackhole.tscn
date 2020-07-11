@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/3d/Material.material" type="Material" id=1]
+[ext_resource path="res://dangers/blackhole/Blackhole.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 350, 220 )
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Sphere"
@@ -45,11 +49,19 @@ tracks/1/keys = {
 }
 
 [node name="Blackhole" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 3 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="."]
 light_mask = 0
-margin_right = 300.0
-margin_bottom = 300.0
+margin_left = -150.0
+margin_top = -150.0
+margin_right = 150.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 100, 100 )
 stretch = true
 __meta__ = {
@@ -77,3 +89,5 @@ anims/SphereAction = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0.43756, 0 )
 current = true
 fov = 133.7
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

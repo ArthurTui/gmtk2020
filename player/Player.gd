@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 signal teleport
 signal add_status
@@ -20,10 +21,12 @@ const STATUS = [null,
 		preload("res://status/debuffs/Bleeding.tscn")]
 
 var movement := Vector2.ZERO
-var stunned := false
 var has_status := []
 var status_array := []
 var hp : float
+
+#BLACKHOLE
+var blackhole = null
 
 
 func _ready():
@@ -96,10 +99,13 @@ func move(new_movement:Vector2):
 	var acc_factor = ACCELERATION_FACTOR
 	var fric_factor = FRICTION_FACTOR
 	
+	# SPEEDUP
 	if has_status[Status.TYPES.SPEEDUP]:
 		new_movement *= status_array[Status.TYPES.SPEEDUP].speed_multiplier
+	# SPEEDDOWN
 	if has_status[Status.TYPES.SPEEDDOWN]:
 		new_movement *= status_array[Status.TYPES.SPEEDDOWN].speed_multiplier
+	# SLIPPERY
 	if has_status[Status.TYPES.SLIPPERY]:
 		acc_factor = status_array[Status.TYPES.SLIPPERY].acceleration_factor
 		fric_factor = status_array[Status.TYPES.SLIPPERY].friction_factor
@@ -109,15 +115,24 @@ func move(new_movement:Vector2):
 	else:
 		movement = lerp(movement, new_movement, fric_factor)
 	
+	# BLEEDING
 	if has_status[Status.TYPES.BLEEDING]:
 		take_damage(status_array[Status.TYPES.BLEEDING].damage * movement.length())
+	
+	# BLACKHOLE
+	if blackhole:
+		movement = blackhole.pull_player(movement, global_position)
+	
 	movement = move_and_slide(movement)
+
 
 func get_width():
 	return $CollisionShape2D.shape.extents.x * 2
 
+
 func get_height():
 	return $CollisionShape2D.shape.extents.y * 2
+
 
 func heal(amount: float):
 	hp = min(hp + amount, MAX_HP)
@@ -156,6 +171,7 @@ func add_status(type:int):
 	#DEBUG
 	emit_signal("add_status", status.name)
 
+
 func remove_status(status:Status):
 	has_status[status.type] = false
 	status_array[status.type] = null
@@ -163,16 +179,25 @@ func remove_status(status:Status):
 	
 	#DEBUG
 	emit_signal("remove_status", status.name)
-	
+
+
 func toggle_status(status_type: int):
 	if not has_status[status_type]:
 		add_status(status_type)
 	else:
 		remove_status(status_array[status_type])
 
+
 func add_camera_bounds(left:int, right:int, bottom:int, top:int):
 	$Camera2D.limit_left = left
-	$Camera2D.limit_right = right	
+	$Camera2D.limit_right = right
 	$Camera2D.limit_bottom = bottom
 	$Camera2D.limit_top = top
-	
+
+
+func blackhole_area_entered(blackhole):
+	self.blackhole = blackhole
+
+
+func blackhole_area_exited():
+	blackhole = null
