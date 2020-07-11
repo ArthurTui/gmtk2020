@@ -56,7 +56,6 @@ scale = Vector2( 0.399572, 0.399724 )
 
 [node name="Acid" parent="Dangers" instance=ExtResource( 8 )]
 position = Vector2( 972.979, 709.935 )
-scale = Vector2( 0.827285, 0.348219 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 38.956, 68.9221 )
