@@ -2,15 +2,15 @@ extends KinematicBody2D
 
 onready var status_node = $StatusNode
 
-const SPEED = 4000
-const FRICTION_SPEED = 8000
-const MAX_SPEED = 400
+const ACCELERATION_FACTOR = .1
+const FRICTION_FACTOR = .5
+const SPEED = 400
 const STATUS = {
 	"speed_up": preload("res://status/debuffs/SpeedUp.tscn"),
 	"petrify": preload("res://status/debuffs/Petrify.tscn"),
 }
 
-var movement = Vector2()
+var movement = Vector2.ZERO
 var stunned = false
 
 
@@ -26,45 +26,34 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
-	
 	if stunned:
 		return
+	move(get_input_movement())
 
-	var move_vec = Vector2()
+
+func get_input_movement() -> Vector2:
+	var move_vec = Vector2.ZERO
 	if Input.is_action_pressed("player_down"):
-		move_vec += Vector2(0,1)
+		move_vec += Vector2(0, 1)
 	if Input.is_action_pressed("player_up"):
-		move_vec += Vector2(0,-1)
+		move_vec += Vector2(0, -1)
 	if Input.is_action_pressed("player_left"):
-		move_vec += Vector2(-1,0)
+		move_vec += Vector2(-1, 0)
 	if Input.is_action_pressed("player_right"):
-		move_vec += Vector2(1,0)
+		move_vec += Vector2(1, 0)
 	
-	move_vec = move_vec.normalized()
+	move_vec = move_vec.normalized() * SPEED
+	
+	return move_vec
 
-	if move_vec != Vector2.ZERO:
-		apply_movement(move_vec * SPEED * delta)
+
+func move(new_movement:Vector2):
+	if new_movement != Vector2.ZERO:
+		movement = lerp(movement, new_movement, ACCELERATION_FACTOR)
 	else:
-		apply_friction(FRICTION_SPEED * delta)
+		movement = lerp(movement, new_movement, FRICTION_FACTOR)
 	
 	movement = move_and_slide(movement)
-
-
-func apply_movement(acceleration):
-	var max_speed = MAX_SPEED
-	if has_status(Status.TYPES.SPEEDUP):
-		acceleration *= 3
-		max_speed *= 3
-	
-	movement += acceleration
-	movement = movement.clamped(max_speed)
-
-
-func apply_friction(acceleration):
-	if movement.length() > acceleration:
-		movement -= movement.normalized() * acceleration
-	else:
-		movement = Vector2()
 
 func stun(duration: float):
 	if stunned:
