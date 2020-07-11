@@ -11,7 +11,8 @@ const STATUS = [null,
 		preload("res://status/debuffs/Petrify.tscn"),
 		preload("res://status/debuffs/Burning.tscn"),
 		preload("res://status/debuffs/Slippery.tscn"),
-		preload("res://status/debuffs/Confused.tscn")]
+		preload("res://status/debuffs/Confused.tscn"),
+		preload("res://status/debuffs/SpeedDown.tscn")]
 
 var movement := Vector2.ZERO
 var stunned := false
@@ -39,6 +40,8 @@ func _unhandled_input(event):
 		add_status(Status.TYPES.SLIPPERY)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_5:
 		add_status(Status.TYPES.CONFUSED)
+	elif event is InputEventKey and event.pressed and event.scancode == KEY_6:
+		add_status(Status.TYPES.SPEEDDOWN)
 
 
 func _physics_process(dt):
@@ -77,6 +80,8 @@ func move(new_movement:Vector2):
 	
 	if has_status[Status.TYPES.SPEEDUP]:
 		new_movement *= status_array[Status.TYPES.SPEEDUP].speed_multiplier
+	if has_status[Status.TYPES.SPEEDDOWN]:
+		new_movement *= status_array[Status.TYPES.SPEEDDOWN].speed_multiplier
 	if has_status[Status.TYPES.SLIPPERY]:
 		acc_factor = status_array[Status.TYPES.SLIPPERY].acceleration_factor
 		fric_factor = status_array[Status.TYPES.SLIPPERY].friction_factor
