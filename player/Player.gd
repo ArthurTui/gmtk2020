@@ -56,14 +56,19 @@ func _unhandled_input(event):
 
 
 func _physics_process(dt):
-	if is_stunned():
-		return
-	
-	move(get_input_movement())
+	if not is_stunned():
+		move(get_input_movement())
 	
 	if has_status[Status.TYPES.BURNING]:
 		var burn = status_array[Status.TYPES.BURNING]
 		take_damage(burn.damage * dt)
+	
+	if $Vision.visible:
+		update_vision_cone()
+
+func update_vision_cone():
+	var angle = (get_global_mouse_position() - global_position).angle() + PI/2
+	$Vision.rotation = angle
 
 func toggle_vision_cone():
 	$Vision.visible = not $Vision.visible
