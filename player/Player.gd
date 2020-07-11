@@ -16,7 +16,7 @@ var movement := Vector2.ZERO
 var stunned := false
 var has_status := []
 var status_array := []
-var hp
+var hp : float
 
 
 func _ready():
@@ -36,11 +36,15 @@ func _unhandled_input(event):
 		add_status(Status.TYPES.BURNING)
 
 
-func _physics_process(_delta):
+func _physics_process(dt):
 	if is_stunned():
 		return
 	
 	move(get_input_movement())
+	
+	if has_status[Status.TYPES.BURNING]:
+		var burn = status_array[Status.TYPES.BURNING]
+		take_damage(burn.damage * dt)
 
 
 func get_input_movement() -> Vector2:
@@ -104,7 +108,6 @@ func add_status(type:int):
 	status.connect("finished", self, "remove_status", [status])
 	status_node.add_child(status)
 	status_array[type] = status
-
 
 func remove_status(status:Status):
 	has_status[status.type] = false
