@@ -32,12 +32,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -106.0
+margin_left = -151.5
 margin_top = -48.5
-margin_right = 106.0
+margin_right = 151.5
 margin_bottom = 48.5
 custom_fonts/font = SubResource( 1 )
-text = "Joguim"
+text = "DREAMING"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
