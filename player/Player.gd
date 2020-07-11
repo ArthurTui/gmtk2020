@@ -69,18 +69,18 @@ func apply_friction(acceleration):
 func stun(duration: float):
 	if stunned:
 		return
-
+	
 	stunned = true
 	yield(get_tree().create_timer(duration), "timeout")
 	stunned = false
-
 
 func add_status(name: String):
 	var status = STATUS[name].instance()
 	
 	var signals = status.get_signal_list()
-	if signals.has("stun"):
-		status.connect("stun", self, "stun")
+	for sig in signals:
+		if sig.name == "stun":
+			status.connect("stun", self, "stun")
 
 	status_node.add_child(status)
 
