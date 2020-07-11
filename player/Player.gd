@@ -6,30 +6,34 @@ const ACCELERATION_FACTOR = .1
 const FRICTION_FACTOR = .5
 const MAX_HP = 100
 const SPEED = 400
-const STATUS = {
-	"speed_up": preload("res://status/debuffs/SpeedUp.tscn"),
-	"petrify": preload("res://status/debuffs/Petrify.tscn"),
-}
-var movement = Vector2.ZERO
-var stunned = false
+const STATUS = [null,
+		preload("res://status/debuffs/SpeedUp.tscn"),
+		preload("res://status/debuffs/Petrify.tscn")]
+
+var movement := Vector2.ZERO
+var stunned := false
+var has_status := []
 var hp
 
 
 func _ready():
 	hp = MAX_HP
 	$HP.text = str(hp)
+	for i in Status.TYPES.size():
+		has_status.append(false)
 
 
 func _unhandled_input(event):
 	if event is InputEventKey and event.pressed and event.scancode == KEY_1:
-		add_status("speed_up")
+		add_status(Status.TYPES.SPEEDUP)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_2:
-		add_status("petrify")
+		add_status(Status.TYPES.PETRIFY)
 
 
-func _physics_process(delta):
-	if stunned:
+func _physics_process(_delta):
+	if is_stunned():
 		return
+	
 	move(get_input_movement())
 
 
@@ -57,9 +61,11 @@ func move(new_movement:Vector2):
 	
 	movement = move_and_slide(movement)
 
+
 func heal(amount: int):
 	hp = min(hp + amount, MAX_HP)
 	$HP.text = str(hp)
+
 
 func take_damage(amount: int):
 	hp = max(hp - amount, 0)
@@ -68,35 +74,32 @@ func take_damage(amount: int):
 	if hp <= 0:
 		die()
 
+
 func die():
 	queue_free()
 
-func stun(duration: float):
-	if stunned:
-		return
-	
-	stunned = true
-	yield(get_tree().create_timer(duration), "timeout")
-	stunned = false
 
-func add_status(name: String):
-	var status = STATUS[name].instance()
-	
-	var signals = status.get_signal_list()
-	for sig in signals:
-		if sig.name == "stun":
-			status.connect("stun", self, "stun")
+func is_stunned() -> bool:
+	return has_status[Status.TYPES.PETRIFY]
 
+
+func add_status(type:int):
+	assert(type != Status.TYPES.NONE)
+	var status : Status = STATUS[type].instance()
+	has_status[status.type] = true
+# warning-ignore:return_value_discarded
+	status.connect("finished", self, "remove_status", [status])
+	
 	status_node.add_child(status)
 
-func has_status(status:int) -> bool:
-	for s in status_node.get_children():
-		if s.type == status:
-			return true
-	return false
 
-func get_status(status:int) -> Status:
+func get_status(type:int) -> Status:
 	for s in status_node.get_children():
-		if s.type == status:
+		if s.type == type:
 			return s
 	return null
+
+
+func remove_status(status:Status):
+	has_status[status.type] = false
+	status_node.remove_child(status)
