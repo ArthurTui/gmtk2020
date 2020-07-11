@@ -20,4 +20,5 @@ scale = Vector2( 0.152586, 0.160053 )
 texture = ExtResource( 1 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 occluder = SubResource( 2 )
