@@ -24,8 +24,10 @@ texture = ExtResource( 3 )
 texture_scale = 3.0
 mode = 3
 shadow_enabled = true
-shadow_color = Color( 0.00392157, 0.00784314, 0.0627451, 1 )
-shadow_filter = 1
+shadow_color = Color( 0.00784314, 0.0196078, 0.215686, 1 )
+shadow_gradient_length = 100.0
+shadow_filter = 2
+shadow_filter_smooth = 5.0
 
 [node name="StatusNode" type="Node" parent="."]
 
@@ -54,15 +56,14 @@ smoothing_enabled = true
 smoothing_speed = 15.0
 
 [node name="Vision" type="Node2D" parent="."]
-visible = false
 
 [node name="VisionCone" type="LightOccluder2D" parent="Vision"]
-position = Vector2( 13.3391, 6.76672 )
+position = Vector2( 13.3391, 13.4409 )
 rotation = -1.74846e-07
 occluder = SubResource( 2 )
 
 [node name="VisionCone2" type="LightOccluder2D" parent="Vision"]
-position = Vector2( -517.499, 8.38019 )
+position = Vector2( -517.499, 15.0544 )
 rotation = -1.74846e-07
 occluder = SubResource( 3 )
 
