@@ -2,7 +2,7 @@ extends Node2D
 
 const section_time := 2.0
 const line_time := 0.3
-const base_speed := 70
+const base_speed := 30
 const speed_up_multiplier := 10.0
 const title_color := Color.blueviolet
 
@@ -27,12 +27,15 @@ var credits = [
 	[		
 		"GMTK2020"
 	],
+	
+	[ "Game Designer",
+	  "","Cedrik Rocha"],
+	
 	[  "Producer, Writer", 
 		"",
 		"Daniela Reigas" ],
 		
-	[ "Game Designer",
-	  "","Cedrik Rocha"],
+	
 	
 	[ "3D Artist",
 	  "","Cnan0.core"],
@@ -40,15 +43,19 @@ var credits = [
 	[ "2D Game Artist",
 	  "","Licínio Souza"],
 	
+	[ "Sound Designer",
+	  "","Rodrigo Passos"],
+	
 	[ "Background Artist",
 	  "","Cristina Sena"],
+		
 	
 	[	
 		"Programming",
 		"",
 		"Rica - Ricardo",
 		"",
-		"Tui - Artur",
+		"Tui",
 		"",
 		"Sysware - Patrick"
 	]
