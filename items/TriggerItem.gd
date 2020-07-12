@@ -17,7 +17,7 @@ var type : int
 
 func set_type(new_type:int):
 	type = new_type
-	sprite.texture = images[type]
+	$Sprite.texture = images[type]
 
 
 func _on_Area2D_body_entered(body):

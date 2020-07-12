@@ -14,6 +14,8 @@ var curr_triggers := {} # item_type:position_index
 func _ready():
 	player = $Room/YSort/Player
 	trigger_items = range(TriggerItem.Types.size())
+	
+	new_level()
 
 
 func new_level():
@@ -32,9 +34,9 @@ func new_level():
 		var item := TriggerItem.new()
 		var pos_index = trigger_pos.pop_front()
 		var type = trigger_items.pop_front()
+		add_child(item)
 		item.position = room.get_item_position(pos_index)
 		item.set_type(type)
-		add_child(item)
 		curr_triggers[type] = pos_index
 
 

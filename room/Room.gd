@@ -14,8 +14,18 @@ func _ready():
 	
 	AudioManager.play_bgm("gameplay", 2)
 
+
 func set_time_of_day(time:int):
 	bg.frame = time
+
+
+func get_item_position(index:int):
+	return item_spawns[index].position
+
+
+func get_opposite_position(index:int):
+	return opposite_spawns[index].position
+
 
 func _on_player_died():
 	$Lose.play()

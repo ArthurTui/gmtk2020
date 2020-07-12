@@ -197,7 +197,6 @@ shadow_filter_smooth = 5.0
 position = Vector2( 0, -40 )
 frames = SubResource( 22 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
