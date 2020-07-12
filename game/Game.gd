@@ -68,6 +68,10 @@ func _ready():
 	
 	new_level()
 
+func _input(event):
+	if event.is_action_pressed("exit"):
+		Transition.transition_to_scene("res://menus/MainMenu.tscn")
+
 func new_level():
 	if not trigger_items.size():
 		boss_level()
