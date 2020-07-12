@@ -11,6 +11,8 @@ func _ready():
 	$YSort/Player.connect("died", self, "_on_player_died")
 # warning-ignore:return_value_discarded
 	$YSort/Player.connect("update_life", self, "_on_player_update_life")
+	
+	AudioManager.play_bgm("gameplay", 2)
 
 func set_time_of_day(time:int):
 	bg.frame = time
