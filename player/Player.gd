@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Player
 
 signal teleport
-signal add_status
 signal remove_status
 signal died
 signal update_life
