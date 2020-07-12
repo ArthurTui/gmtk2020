@@ -1,4 +1,4 @@
-[gd_scene load_steps=246 format=2]
+[gd_scene load_steps=247 format=2]
 
 [ext_resource path="res://assets/images/blackhole/blackhole001.png" type="Texture" id=1]
 [ext_resource path="res://dangers/blackhole/Blackhole.gd" type="Script" id=2]
@@ -241,6 +241,7 @@
 [ext_resource path="res://assets/images/blackhole/blackhole148.png" type="Texture" id=239]
 [ext_resource path="res://assets/images/blackhole/blackhole149.png" type="Texture" id=240]
 [ext_resource path="res://assets/images/blackhole/blackhole147.png" type="Texture" id=241]
+[ext_resource path="res://assets/sound/sfx/wormhole.wav" type="AudioStream" id=242]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 350, 220 )
@@ -292,6 +293,10 @@ frames = SubResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
 autoplay = "default"
 anims/default = SubResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 242 )
+autoplay = true
 [connection signal="body_entered" from="PullArea" to="." method="_on_PullArea_body_entered"]
 [connection signal="body_exited" from="PullArea" to="." method="_on_PullArea_body_exited"]
 [connection signal="body_entered" from="DeathArea" to="." method="_on_DeathArea_body_entered"]

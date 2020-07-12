@@ -7,6 +7,8 @@ func _ready():
 	$Player.connect("add_status", self, "_on_player_add_status")
 # warning-ignore:return_value_discarded
 	$Player.connect("remove_status", self, "_on_player_remove_status")
+# warning-ignore:return_value_discarded
+	$Player.connect("died", self, "_on_player_died")
 
 #Get a random valid position to position player
 func random_valid_position():
@@ -32,6 +34,7 @@ func _on_player_add_status(name):
 	label.name = name
 	label.text = name
 	$DebugHUD/VBoxContainer.add_child(label)
+
 
 func _on_player_remove_status(name):
 	var label = $DebugHUD/VBoxContainer.get_node(name)
