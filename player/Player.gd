@@ -96,6 +96,19 @@ func get_input_movement() -> Vector2:
 	if Input.is_action_pressed("player_right"):
 		move_vec += Vector2(1, 0)
 	
+	if move_vec.length() > 0:
+		if has_status[Status.TYPES.SLIPPERY]:
+			$WalkSFX.stop()
+			if not $SlipperySFX.playing:
+				$SlipperySFX.play()
+		else:
+			$SlipperySFX.stop()
+			if not $WalkSFX.playing:
+				$WalkSFX.play()
+	else:
+		$SlipperySFX.stop()
+		$WalkSFX.stop()
+	
 	if has_status[Status.TYPES.CONFUSED]:
 		move_vec *= -1
 	
@@ -150,18 +163,6 @@ func move(new_movement:Vector2):
 	if blackhole:
 		movement = blackhole.pull_player(movement, global_position)
 	
-	if movement.length() > .1:
-		if has_status[Status.TYPES.SLIPPERY]:
-			$WalkSFX.stop()
-			if not $SlipperySFX.playing:
-				$SlipperySFX.play()
-		else:
-			$SlipperySFX.stop()
-			if not $WalkSFX.playing:
-				$WalkSFX.play()
-	else:
-		$SlipperySFX.stop()
-		$WalkSFX.stop()
 	movement = move_and_slide(movement)
 
 
