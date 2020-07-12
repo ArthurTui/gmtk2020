@@ -198,16 +198,21 @@ func add_status(type:int):
 		return
 	
 	assert(type != Status.TYPES.NONE, "Status type can't be NONE")
-	var status : Status = STATUS[type].instance()
-	has_status[status.type] = true
+	has_status[type] = true
 	
-# warning-ignore:return_value_discarded
-	status.connect("finished", self, "remove_status", [status])
-	status_node.add_child(status)
-	status_array[type] = status
+	if type == Status.TYPES.DARKNESS:
+		toggle_vision_cone()
+	elif type == Status.TYPES.TELEPORT:
+		pass
+	else:
+		var status : Status = STATUS[type].instance()
+	# warning-ignore:return_value_discarded
+		status.connect("finished", self, "remove_status", [status])
+		status_node.add_child(status)
+		status_array[type] = status
 	
 	#DEBUG
-	emit_signal("add_status", status.name)
+#	emit_signal("add_status", status.name)
 
 
 func remove_status(status:Status):
@@ -224,6 +229,11 @@ func toggle_status(status_type: int):
 		add_status(status_type)
 	else:
 		remove_status(status_array[status_type])
+
+
+func pickup_item(item:Item):
+	pass
+
 
 func blackhole_area_entered(bhole):
 	blackhole = bhole

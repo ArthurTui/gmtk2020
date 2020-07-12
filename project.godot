@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Status",
 "language": "GDScript",
 "path": "res://status/Status.gd"
+}, {
+"base": "Item",
+"class": "TriggerItem",
+"language": "GDScript",
+"path": "res://items/TriggerItem.gd"
 } ]
 _global_script_class_icons={
 "Furniture": "",
 "Item": "",
 "Player": "",
-"Status": ""
+"Status": "",
+"TriggerItem": ""
 }
 
 [application]
