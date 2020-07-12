@@ -1,21 +1,144 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://dangers/toxic_fumes/ToxicFumes.gd" type="Script" id=1]
-[ext_resource path="res://assets/images/smoke.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/smoke/0001.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/smoke/0002.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/smoke/0028.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/smoke/0025.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/smoke/0027.png" type="Texture" id=6]
+[ext_resource path="res://assets/images/smoke/0026.png" type="Texture" id=7]
+[ext_resource path="res://assets/images/smoke/0029.png" type="Texture" id=8]
+[ext_resource path="res://assets/images/smoke/0030.png" type="Texture" id=9]
+[ext_resource path="res://assets/images/smoke/0021.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/smoke/0008.png" type="Texture" id=11]
+[ext_resource path="res://assets/images/smoke/0022.png" type="Texture" id=12]
+[ext_resource path="res://assets/images/smoke/0023.png" type="Texture" id=13]
+[ext_resource path="res://assets/images/smoke/0024.png" type="Texture" id=14]
+[ext_resource path="res://assets/images/smoke/0011.png" type="Texture" id=15]
+[ext_resource path="res://assets/images/smoke/0016.png" type="Texture" id=16]
+[ext_resource path="res://assets/images/smoke/0004.png" type="Texture" id=17]
+[ext_resource path="res://assets/images/smoke/0005.png" type="Texture" id=18]
+[ext_resource path="res://assets/images/smoke/0006.png" type="Texture" id=19]
+[ext_resource path="res://assets/images/smoke/0010.png" type="Texture" id=20]
+[ext_resource path="res://assets/images/smoke/0012.png" type="Texture" id=21]
+[ext_resource path="res://assets/images/smoke/0013.png" type="Texture" id=22]
+[ext_resource path="res://assets/images/smoke/0014.png" type="Texture" id=23]
+[ext_resource path="res://assets/images/smoke/0017.png" type="Texture" id=24]
+[ext_resource path="res://assets/images/smoke/0003.png" type="Texture" id=25]
+[ext_resource path="res://assets/images/smoke/0007.png" type="Texture" id=26]
+[ext_resource path="res://assets/images/smoke/0015.png" type="Texture" id=27]
+[ext_resource path="res://assets/images/smoke/0018.png" type="Texture" id=28]
+[ext_resource path="res://assets/images/smoke/0019.png" type="Texture" id=29]
+[ext_resource path="res://assets/images/smoke/0009.png" type="Texture" id=30]
+[ext_resource path="res://assets/images/smoke/0020.png" type="Texture" id=31]
+[ext_resource path="res://assets/images/smoke/0110.png" type="Texture" id=32]
+[ext_resource path="res://assets/images/smoke/0111.png" type="Texture" id=33]
+[ext_resource path="res://assets/images/smoke/0113.png" type="Texture" id=34]
+[ext_resource path="res://assets/images/smoke/0114.png" type="Texture" id=35]
+[ext_resource path="res://assets/images/smoke/0118.png" type="Texture" id=36]
+[ext_resource path="res://assets/images/smoke/0115.png" type="Texture" id=37]
+[ext_resource path="res://assets/images/smoke/0117.png" type="Texture" id=38]
+[ext_resource path="res://assets/images/smoke/0119.png" type="Texture" id=39]
+[ext_resource path="res://assets/images/smoke/0108.png" type="Texture" id=40]
+[ext_resource path="res://assets/images/smoke/0109.png" type="Texture" id=41]
+[ext_resource path="res://assets/images/smoke/0112.png" type="Texture" id=42]
+[ext_resource path="res://assets/images/smoke/0116.png" type="Texture" id=43]
+[ext_resource path="res://assets/images/smoke/0120.png" type="Texture" id=44]
+[ext_resource path="res://assets/images/smoke/0092.png" type="Texture" id=45]
+[ext_resource path="res://assets/images/smoke/0093.png" type="Texture" id=46]
+[ext_resource path="res://assets/images/smoke/0090.png" type="Texture" id=48]
+[ext_resource path="res://assets/images/smoke/0051.png" type="Texture" id=49]
+[ext_resource path="res://assets/images/smoke/0040.png" type="Texture" id=50]
+[ext_resource path="res://assets/images/smoke/0073.png" type="Texture" id=51]
+[ext_resource path="res://assets/images/smoke/0076.png" type="Texture" id=53]
+[ext_resource path="res://assets/images/smoke/0088.png" type="Texture" id=55]
+[ext_resource path="res://assets/images/smoke/0091.png" type="Texture" id=56]
+[ext_resource path="res://assets/images/smoke/0049.png" type="Texture" id=57]
+[ext_resource path="res://assets/images/smoke/0056.png" type="Texture" id=61]
+[ext_resource path="res://assets/images/smoke/0043.png" type="Texture" id=63]
+[ext_resource path="res://assets/images/smoke/0061.png" type="Texture" id=64]
+[ext_resource path="res://assets/images/smoke/0033.png" type="Texture" id=65]
+[ext_resource path="res://assets/images/smoke/0045.png" type="Texture" id=66]
+[ext_resource path="res://assets/images/smoke/0075.png" type="Texture" id=69]
+[ext_resource path="res://assets/images/smoke/0050.png" type="Texture" id=70]
+[ext_resource path="res://assets/images/smoke/0080.png" type="Texture" id=71]
+[ext_resource path="res://assets/images/smoke/0038.png" type="Texture" id=72]
+[ext_resource path="res://assets/images/smoke/0042.png" type="Texture" id=73]
+[ext_resource path="res://assets/images/smoke/0037.png" type="Texture" id=74]
+[ext_resource path="res://assets/images/smoke/0078.png" type="Texture" id=75]
+[ext_resource path="res://assets/images/smoke/0081.png" type="Texture" id=76]
+[ext_resource path="res://assets/images/smoke/0036.png" type="Texture" id=77]
+[ext_resource path="res://assets/images/smoke/0046.png" type="Texture" id=79]
+[ext_resource path="res://assets/images/smoke/0052.png" type="Texture" id=80]
+[ext_resource path="res://assets/images/smoke/0031.png" type="Texture" id=81]
+[ext_resource path="res://assets/images/smoke/0032.png" type="Texture" id=82]
+[ext_resource path="res://assets/images/smoke/0048.png" type="Texture" id=83]
+[ext_resource path="res://assets/images/smoke/0039.png" type="Texture" id=86]
+[ext_resource path="res://assets/images/smoke/0082.png" type="Texture" id=87]
+[ext_resource path="res://assets/images/smoke/0084.png" type="Texture" id=89]
+[ext_resource path="res://assets/images/smoke/0085.png" type="Texture" id=90]
+[ext_resource path="res://assets/images/smoke/0060.png" type="Texture" id=91]
+[ext_resource path="res://assets/images/smoke/0034.png" type="Texture" id=93]
+[ext_resource path="res://assets/images/smoke/0044.png" type="Texture" id=95]
+[ext_resource path="res://assets/images/smoke/0035.png" type="Texture" id=96]
+[ext_resource path="res://assets/images/smoke/0041.png" type="Texture" id=98]
+[ext_resource path="res://assets/images/smoke/0047.png" type="Texture" id=99]
+[ext_resource path="res://assets/images/smoke/0083.png" type="Texture" id=101]
+[ext_resource path="res://assets/images/smoke/0086.png" type="Texture" id=102]
+[ext_resource path="res://assets/images/smoke/0087.png" type="Texture" id=103]
+[ext_resource path="res://assets/images/smoke/0089.png" type="Texture" id=104]
+[ext_resource path="res://assets/images/smoke/0100.png" type="Texture" id=105]
+[ext_resource path="res://assets/images/smoke/0097.png" type="Texture" id=106]
+[ext_resource path="res://assets/images/smoke/0101.png" type="Texture" id=107]
+[ext_resource path="res://assets/images/smoke/0105.png" type="Texture" id=108]
+[ext_resource path="res://assets/images/smoke/0102.png" type="Texture" id=109]
+[ext_resource path="res://assets/images/smoke/0106.png" type="Texture" id=110]
+[ext_resource path="res://assets/images/smoke/0107.png" type="Texture" id=111]
+[ext_resource path="res://assets/images/smoke/0103.png" type="Texture" id=112]
+[ext_resource path="res://assets/images/smoke/0099.png" type="Texture" id=113]
+[ext_resource path="res://assets/images/smoke/0104.png" type="Texture" id=114]
+[ext_resource path="res://assets/images/smoke/0098.png" type="Texture" id=115]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 25 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 26 ), ExtResource( 11 ), ExtResource( 30 ), ExtResource( 20 ), ExtResource( 15 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 16 ), ExtResource( 24 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 31 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 65 ), ExtResource( 93 ), ExtResource( 96 ), ExtResource( 77 ), ExtResource( 74 ), ExtResource( 72 ), ExtResource( 86 ), ExtResource( 50 ), ExtResource( 98 ), ExtResource( 73 ), ExtResource( 63 ), ExtResource( 95 ), ExtResource( 66 ), ExtResource( 79 ), ExtResource( 99 ), ExtResource( 83 ), ExtResource( 57 ), ExtResource( 70 ), ExtResource( 49 ), ExtResource( 80 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 102 ), ExtResource( 103 ), ExtResource( 55 ), ExtResource( 104 ), ExtResource( 48 ), ExtResource( 56 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 106 ), ExtResource( 115 ), ExtResource( 113 ), ExtResource( 105 ), ExtResource( 107 ), ExtResource( 109 ), ExtResource( 112 ) ],
+"loop": true,
+"name": "active",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 114 ), ExtResource( 108 ), ExtResource( 110 ), ExtResource( 111 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 42 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 37 ), ExtResource( 43 ), ExtResource( 38 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "deactivating",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 61 ), ExtResource( 91 ), ExtResource( 64 ), ExtResource( 51 ), ExtResource( 69 ), ExtResource( 53 ), ExtResource( 75 ), ExtResource( 71 ), ExtResource( 76 ), ExtResource( 87 ), ExtResource( 101 ), ExtResource( 89 ), ExtResource( 90 ) ],
+"loop": true,
+"name": "activating",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 255.301, 254.556 )
 
 [node name="ToxicFumes" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2.71408, 2.647 )
-texture = ExtResource( 2 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -204.544 )
+scale = Vector2( 1.46027, 2.11204 )
+frames = SubResource( 3 )
+frame = 3
+speed_scale = 4.0
+playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
