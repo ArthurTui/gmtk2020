@@ -4,6 +4,9 @@ onready var room = $Room
 
 enum States {DAY, NIGHT}
 
+const TRIGGER_SCENE = preload("res://items/TriggerItem.tscn")
+const SAFE_SCENE = preload("res://items/SafeItem.tscn")
+
 var curr_state : int
 var player : Player
 var safe_pos : Vector2
@@ -31,12 +34,13 @@ func new_level():
 	trigger_pos.shuffle()
 	
 	for i in items_to_add:
-		var item := TriggerItem.new()
+		var item := TRIGGER_SCENE.instance()
 		var pos_index = trigger_pos.pop_front()
 		var type = trigger_items.pop_front()
-		add_child(item)
+		$TriggerItems.add_child(item)
 		item.position = room.get_item_position(pos_index)
 		item.set_type(type)
+		item.connect("picked_up", self, "_on_item_picked_up")
 		curr_triggers[type] = pos_index
 
 
@@ -45,4 +49,10 @@ func boss_level():
 
 
 func _on_item_picked_up(type:int):
+	for trigger in $TriggerItems.get_children():
+		if trigger.type != type:
+			trigger.queue_free()
+	
 	get_tree().call_group("furniture", "set_time_of_day", Furniture.NIGHT)
+	
+	
