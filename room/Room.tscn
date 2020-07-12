@@ -104,3 +104,17 @@ position = Vector2( 345.218, 618.621 )
 
 [node name="Furniture8" parent="YSort" instance=ExtResource( 13 )]
 position = Vector2( 931.082, 466.171 )
+
+[node name="ItemSpawns" type="Node2D" parent="."]
+
+[node name="S1" type="Node2D" parent="ItemSpawns"]
+position = Vector2( 415.655, 313.057 )
+
+[node name="S2" type="Node2D" parent="ItemSpawns"]
+position = Vector2( 925.954, 322.136 )
+
+[node name="S3" type="Node2D" parent="ItemSpawns"]
+position = Vector2( 338.617, 668.245 )
+
+[node name="S4" type="Node2D" parent="ItemSpawns"]
+position = Vector2( 928.951, 665.248 )
