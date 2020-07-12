@@ -62,6 +62,8 @@ func boss_level():
 
 
 func _on_item_picked_up(type:int):
+	$PickedItem.play()
+	$Laugh.play()
 	for trigger in $TriggerItems.get_children():
 		if trigger.type != type:
 			trigger_items.append(trigger.type)
@@ -87,6 +89,7 @@ func _on_item_picked_up(type:int):
 
 
 func _on_safe_reached():
+	$Reached.play()
 	for safe in $SafeItems.get_children():
 		safe.queue_free()
 	
