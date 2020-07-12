@@ -56,11 +56,7 @@ func set_target(target_pos):
 	target = target_pos
 
 func get_new_position():
-	randomize()
-	var x = rand_range(450,650)
-	var y = rand_range(400,500)
-	target = Vector2(x, y)
-	#emit_signal("get_position")
+	emit_signal("get_position", self)
 
 
 func _on_Area2D_body_entered(body):

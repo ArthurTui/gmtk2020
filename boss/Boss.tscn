@@ -107,12 +107,16 @@ extents = Vector2( 44.6593, 69.7838 )
 extents = Vector2( 53.6647, 77.2001 )
 
 [node name="Boss" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 86 )
+SPEED = 500
+DAMAGE = 40
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.256071, 0.231694 )
 frames = SubResource( 1 )
-frame = 49
+frame = 14
 speed_scale = 4.0
 playing = true
 
@@ -122,6 +126,7 @@ shape = SubResource( 2 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2( 2.20526, 1.6727 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )

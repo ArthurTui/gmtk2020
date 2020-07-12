@@ -99,6 +99,7 @@ func boss_level():
 	var boss = BOSS_SCENE.instance()
 	room.add_child(boss)
 	boss.position = $Room/BlackholePosition.position
+	boss.connect("get_position", room, "_more_than_a_feeling")
 	
 	var safe_item = SAFE_SCENE.instance()
 	$SafeItems.add_child(safe_item)
@@ -106,7 +107,6 @@ func boss_level():
 	respawn_position = player.position
 	safe_item.set_type(SafeItem.Types.CLOCK)
 	safe_item.connect("reached", self, "_on_safe_reached")
-
 
 func gameover():
 	AudioManager.stop_bgm()

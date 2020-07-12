@@ -84,7 +84,17 @@ func _on_player_died():
 		randomize()
 		var n = randi()%$PlayerDeath.get_child_count() + 1
 		get_node("PlayerDeath/AudioStreamPlayer" + str(n)).play()
-	
+
+	#Get a random valid position to position boss
+func _more_than_a_feeling(boss):
+	var limit = 10
+	var valid_s = [Vector2(600, 500)]
+	for spawn in $DangerSpawns.get_children():
+		valid_s.append(spawn.position)
+	#Teleport player
+	valid_s.shuffle()
+	boss.target = valid_s.back()
+
 
 func _on_player_update_life(amount):
 	$PlayerHUD.update_life(amount)

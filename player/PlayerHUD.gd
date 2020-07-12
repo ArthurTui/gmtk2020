@@ -18,7 +18,7 @@ func update_life(cur_life):
 		if prev_life > cur_life:
 			cur_heart.shake()
 		prev_life = cur_life
-		if half_heart:
+		if half_heart or cur_life >= 100:
 			cur_heart.texture = HALF_HEART
 		else:
 			cur_heart.texture = FULL_HEART
