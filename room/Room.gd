@@ -15,6 +15,18 @@ const DANGER_SCENES = [preload("res://dangers/acid/Acid.tscn"),
 		preload("res://dangers/lava/Lava.tscn"),
 		preload("res://dangers/toxic_fumes/ToxicFumes.tscn")]
 
+#Get a random valid position to position player
+func random_valid_position():
+	var limit = 10
+	var valid_s = [Vector2(600, 500)]
+	for spawn in $DangerSpawns.get_children():
+		for danger in $Dangers.get_children():
+			if (spawn.position - danger.position).length() > limit:
+				valid_s.append(spawn.position)
+	#Teleport player
+	valid_s.shuffle()
+	$YSort/Player.position = valid_s.back()
+
 
 func _ready():
 # warning-ignore:return_value_discarded

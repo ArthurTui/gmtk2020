@@ -42,7 +42,7 @@ func _ready():
 		status_array.append(null)
 
 
-#func _unhandled_input(event):
+func _unhandled_input(event):
 #	if event is InputEventKey and event.pressed and event.scancode == KEY_1:
 #		toggle_status(Status.TYPES.SPEEDUP)
 #	elif event is InputEventKey and event.pressed and event.scancode == KEY_2:
@@ -57,8 +57,8 @@ func _ready():
 #		toggle_status(Status.TYPES.SPEEDDOWN)
 #	elif event is InputEventKey and event.pressed and event.scancode == KEY_7:
 #		toggle_status(Status.TYPES.BLEEDING)
-#	elif event is InputEventKey and event.pressed and event.scancode == KEY_8:
-#		toggle_status(Status.TYPES.TELEPORT)
+	#if event is InputEventKey and event.pressed and event.scancode == KEY_8:
+		#toggle_status(Status.TYPES.TELEPORT)
 #	elif event is InputEventKey and event.pressed and event.scancode == KEY_9:
 #		toggle_vision_cone()
 
