@@ -8,9 +8,9 @@ enum Types {BOOK, RING, BADGE, PILLS, MATCHES, PLANE}
 const debuffs = [Status.TYPES.SPEEDDOWN, Status.TYPES.CONFUSED,
 		Status.TYPES.TELEPORT, Status.TYPES.SLIPPERY, Status.TYPES.DARKNESS,
 		Status.TYPES.SPEEDUP]
-const images = [preload("res://icon.png"), preload("res://icon.png"),
-		preload("res://icon.png"), preload("res://icon.png"),
-		preload("res://icon.png"), preload("res://icon.png")]
+const images = [preload("res://assets/images/items/t6_livro.png"), preload("res://assets/images/items/t2 alianca.png"),
+		preload("res://assets/images/items/t1_cracha.png"), preload("res://assets/images/items/t4_comprimidos.png"),
+		preload("res://assets/images/items/t3_fosforo.png"), preload("res://assets/images/items/t5_aviao.png")]
 
 var type : int
 

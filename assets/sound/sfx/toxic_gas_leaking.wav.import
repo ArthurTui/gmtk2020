@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/toxic_gas_leaking.wav-420a9fe4a9a94a2ab725b2186b9ad49c.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/toxic_gas_leaking.wav"
+dest_files=[ "res://.import/toxic_gas_leaking.wav-420a9fe4a9a94a2ab725b2186b9ad49c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
