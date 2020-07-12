@@ -1,25 +1,38 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/images/mainmenu/window-9sliced.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/mainmenu/btn x.png" type="Texture" id=2]
-[ext_resource path="res://credits/credits.gd" type="Script" id=3]
+[ext_resource path="res://credits/credits.gd" type="Script" id=1]
 
-[node name="Main" type="Node2D"]
-script = ExtResource( 3 )
+[node name="Credits" type="Node2D"]
+script = ExtResource( 1 )
 
-[node name="back" type="Sprite" parent="."]
-position = Vector2( 627.339, 350.23 )
-scale = Vector2( 1.65359, 1.72246 )
-texture = ExtResource( 1 )
-
-[node name="Button" type="Button" parent="."]
-margin_left = 283.65
-margin_top = 44.0054
-margin_right = 409.65
-margin_bottom = 159.005
-icon = ExtResource( 2 )
-flat = true
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -51.1386
+margin_top = -21.0866
+margin_right = 1236.86
+margin_bottom = 696.913
+rect_scale = Vector2( 1.12609, 1.08 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]
+
+[node name="CreditsContainer" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line" type="Label" parent="CreditsContainer"]
+anchor_right = 1.0
+margin_left = 544.937
+margin_top = 738.302
+margin_right = 617.937
+margin_bottom = 752.302
+rect_scale = Vector2( 1.64, 1.48 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Credits line"
+align = 1

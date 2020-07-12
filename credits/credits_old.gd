@@ -2,14 +2,14 @@ extends Node2D
 
 const section_time := 2.0
 const line_time := 0.3
-const base_speed := 70
+const base_speed := 100
 const speed_up_multiplier := 10.0
 const title_color := Color.blueviolet
 
 var scroll_speed := base_speed
 var speed_up := false
 
-onready var line := $CreditsContainer/Line
+onready var line := $Main/CreditsContainer
 var started := false
 var finished := false
 
@@ -21,39 +21,33 @@ var curr_line := 0
 var lines := []
 
 var credits = [
-		[
+	[
 		"Dreaming"
 	],
 	[		
 		"GMTK2020"
-	],
-	[  "Producer, Writer", 
-		"",
-		"Daniela Reigas" ],
-		
-	[ "Game Designer",
-	  "","Cedrik Rocha"],
-	
-	[ "3D Artist",
-	  "","Cnan0.core"],
-	
-	[ "2D Game Artist",
-	  "","Licínio Souza"],
-	
-	[ "Background Artist",
-	  "","Cristina Sena"],
-	
-	[	
+	],[
 		"Programming",
-		"",
-		"Rica - Ricardo",
-		"",
-		"Tui - Artur",
-		"",
-		"Sysware - Patrick"
+		"Programmer Name",
+		"Programmer Name 2"
 	]
-	
 ]
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+	
+
+
+func _on_Button_button_down():
+	Transition.transition_to_scene("res://menus/MainMenu.tscn")
 
 
 func _process(delta):
@@ -95,7 +89,6 @@ func finish():
 		# NOTE: This is called when the credits finish
 		# - Hook up your code to return to the relevant scene here, eg...
 		#get_tree().change_scene("res://scenes/MainMenu.tscn")
-		Transition.transition_to_scene("res://menus/MainMenu.tscn")
 
 
 func add_line():
@@ -120,3 +113,5 @@ func _unhandled_input(event):
 		speed_up = true
 	if event.is_action_released("ui_down") and !event.is_echo():
 		speed_up = false
+
+
