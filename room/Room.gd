@@ -75,9 +75,15 @@ func _on_player_died():
 	$Die.play()
 	$Lose.play()
 	#get random death sfx
-	randomize()
-	var n = randi()%$PlayerDeath.get_child_count() + 1
-	get_node("PlayerDeath/AudioStreamPlayer" + str(n)).play()
+	var ok = true
+	for child in $PlayerDeath.get_children():
+		if child.playing:
+			ok = not ok #(～﹃～)~zZ
+			break
+	if ok:
+		randomize()
+		var n = randi()%$PlayerDeath.get_child_count() + 1
+		get_node("PlayerDeath/AudioStreamPlayer" + str(n)).play()
 	
 
 func _on_player_update_life(amount):
