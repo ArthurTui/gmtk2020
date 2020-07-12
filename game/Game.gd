@@ -133,3 +133,5 @@ func _on_player_death():
 	player.connect("update_life", room, "_on_player_update_life")
 	player.connect("teleport", self, "random_valid_position")
 	player.connect("died", self, "_on_player_death")
+	
+	player.emit_signal("update_life", player.hp)
