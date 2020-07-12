@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/Modak-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://menus/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/mainmenu/start.jpg" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -27,7 +28,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 636.888, 360.812 )
+texture = ExtResource( 3 )
+
 [node name="Title" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -47,10 +53,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -63.0
-margin_top = 70.0
-margin_right = 63.0
-margin_bottom = 160.0
+margin_left = -76.6671
+margin_top = 199.382
+margin_right = 49.3329
+margin_bottom = 289.382
 __meta__ = {
 "_edit_use_anchors_": false
 }
