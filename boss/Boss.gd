@@ -3,7 +3,7 @@ extends KinematicBody2D
 signal get_position
 
 export var SPEED = 300
-export var STRENGTH = 3000
+export var STRENGTH = 15000
 export var DAMAGE = 10
 
 var target = null
@@ -66,5 +66,5 @@ func get_new_position():
 func _on_Area2D_body_entered(body):
 	if body is Player:
 		var dir = (body.position - position).normalized()
-		body.knockback(dir * STRENGTH)
+		body.knockback_self(dir * STRENGTH)
 		body.take_damage(DAMAGE)

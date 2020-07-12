@@ -181,8 +181,11 @@ func heal(amount: float):
 func _on_teleport():
 	emit_signal("teleport")
 
-func knockback(vec):
-	$Tween.interpolate_property(self, "knockback", vec, Vector2(), .3, Tween.TRANS_QUAD, Tween.EASE_IN)
+func knockback_self(vec):
+	if knockback.length() > 1:
+		return
+	$Tween.interpolate_property(self, "knockback", vec, Vector2(), .4, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$Tween.start()
 	
 
 func take_damage(amount: float):
