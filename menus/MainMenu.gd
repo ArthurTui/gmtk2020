@@ -4,6 +4,7 @@ func _ready():
 	AudioManager.play_bgm("intro", 1)
 
 func _on_NewGame_pressed():
+	$"/root/AudioManager".stop_bgm()
 	Transition.transition_to_scene("res://intro/intro.tscn")
 
 
