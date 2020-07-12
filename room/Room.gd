@@ -27,3 +27,7 @@ func _on_player_died():
 
 func _on_player_update_life(amount):
 	$PlayerHUD.update_life(amount)
+	if amount > 30:
+		AudioManager.stop_heartbeat()
+	else:
+		AudioManager.play_heartbeat()

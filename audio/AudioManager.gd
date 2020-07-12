@@ -23,17 +23,16 @@ func play_bgm(name, tracks):
 		player.stream = BGMS[name]
 		fadein(player)
 	else:
-		print("here")
 		$TrackFadeIn1.stream = BGMS[name+str(1)]
 		$TrackFadeIn2.stream = BGMS[name+str(2)]
 		fadein($TrackFadeIn1)
 		fadein($TrackFadeIn2)
 
-func fadein(player):
+func fadein(player, boost = 0):
 		player.volume_db = MUTE_DB
 		player.play()
-		$Tween.interpolate_property(player, "volume_db", MUTE_DB, REGULAR_DB,
-									abs(MUTE_DB - REGULAR_DB)/FADEIN_SPEED,
+		$Tween.interpolate_property(player, "volume_db", MUTE_DB, REGULAR_DB + boost,
+									abs(MUTE_DB - REGULAR_DB - boost)/FADEIN_SPEED,
 									Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 
@@ -43,6 +42,23 @@ func fadeout(player):
 									Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$Tween.start()
 
+func update_tracks(number):
+	if number == 2:
+		if not $TrackFadeIn1.playing:
+			fadein($TrackFadeIn1)
+		if not $TrackFadeIn2.playing:
+			fadein($TrackFadeIn2)
+	elif number == 1:
+		if not $TrackFadeIn1.playing:
+			fadein($TrackFadeIn1)
+		if $TrackFadeIn2.playing:
+			fadeout($TrackFadeIn2)
+	elif number == 0:
+		if $TrackFadeIn1.playing:
+			fadeout($TrackFadeIn1)
+		if $TrackFadeIn2.playing:
+			fadeout($TrackFadeIn2)
+			
 func stop_bgm():
 	if $TrackFadeIn1.playing:
 		var fadein = $TrackFadeIn1
@@ -64,7 +80,7 @@ func stop_bgm():
 func play_heartbeat():
 	if not $HeartBeat.playing:
 		var player = $HeartBeat
-		fadein(player)
+		fadein(player, 10)
 
 func stop_heartbeat():
 	if $HeartBeat.playing:
