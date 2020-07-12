@@ -3,11 +3,14 @@ class_name SafeItem
 
 signal reached
 
-enum Types {BOOK, RING, BADGE, PILLS, MATCHES, PLANE}
+enum Types {BOOK, RING, BADGE, PILLS, MATCHES, PLANE, CLOCK}
 
-const images = [preload("res://assets/images/items/s6_chapeu formatura.png"), preload("res://assets/images/items/s2_buque.png"),
-		preload("res://assets/images/items/s1_carteira.png"), preload("res://assets/images/items/s5_vacina.png"),
-		preload("res://assets/images/items/s4_lanterna.png"), preload("res://assets/images/items/s3_carro.png")]
+const images = [preload("res://assets/images/items/s6_chapeu formatura.png"), 		preload("res://assets/images/items/s2_buque.png"),
+		preload("res://assets/images/items/s1_carteira.png"),
+		preload("res://assets/images/items/s5_vacina.png"),
+		preload("res://assets/images/items/s4_lanterna.png"), 
+		preload("res://assets/images/items/s3_carro.png"),
+		preload("res://assets/images/items/n_relog mistic.png")]
 
 var type : int
 

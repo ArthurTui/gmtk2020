@@ -42,6 +42,7 @@ const LOC_SFX = [
 	]
 ]
 
+const BOSS_SCENE = preload("res://boss/Boss.tscn")
 const DANGER_AMOUNT = [4, 5, 6, 7, 8, 9]
 const OPPOSITE_INDEX = [3, 2, 1, 0]
 
@@ -93,6 +94,19 @@ func new_level():
 
 
 func boss_level():
+	var boss = BOSS_SCENE.instance()
+	room.add_child(boss)
+	boss.position = $Room/BlackholePosition.position
+	
+	var safe_item = SAFE_SCENE.instance()
+	$SafeItems.add_child(safe_item)
+	safe_item.position = respawn_position
+	respawn_position = player.position
+	safe_item.set_type(SafeItem.Types.CLOCK)
+	safe_item.connect("reached", self, "_on_safe_reached")
+
+
+func gameover():
 	pass
 
 
@@ -129,11 +143,16 @@ func _on_item_picked_up(type:int):
 func _on_safe_reached():
 	$Reached.play()
 	for safe in $SafeItems.get_children():
-		safe.queue_free()
+		if safe.type == SafeItem.Types.CLOCK:
+			gameover()
+			return
+		else:
+			safe.queue_free()
 	
 	player.remove_all_status()
 	level += 1
-	get_tree().call_group("furniture", "set_time_of_day", Furniture.DAY)
+	if trigger_items.size():
+		get_tree().call_group("furniture", "set_time_of_day", Furniture.DAY)
 	room.clear_danger()
 	new_level()
 
