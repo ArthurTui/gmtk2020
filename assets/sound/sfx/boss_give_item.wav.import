@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boss_give_item.wav-4cb4f55ee0f4bcf256022a4711f87994.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/boss_give_item.wav"
+dest_files=[ "res://.import/boss_give_item.wav-4cb4f55ee0f4bcf256022a4711f87994.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

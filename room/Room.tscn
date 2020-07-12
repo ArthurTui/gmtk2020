@@ -50,5 +50,7 @@ position = Vector2( 1030, 360 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
 shape = SubResource( 3 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 455, 384 )
