@@ -82,7 +82,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.00257, 0.979192 )
 frames = SubResource( 1 )
-frame = 11
+frame = 27
 speed_scale = 3.0
 playing = true
 
@@ -94,7 +94,9 @@ shape = SubResource( 2 )
 [node name="Loop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -13.126
+bus = "SFX"
 
 [node name="Damage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 59 )
+bus = "SFX"
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

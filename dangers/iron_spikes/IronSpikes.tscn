@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://dangers/iron_spikes/IronSpikes.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/spikes/0001.png" type="Texture" id=2]
@@ -61,6 +61,7 @@
 [ext_resource path="res://assets/images/spikes/0044.png" type="Texture" id=59]
 [ext_resource path="res://assets/images/spikes/0059.png" type="Texture" id=60]
 [ext_resource path="res://assets/images/spikes/0042.png" type="Texture" id=61]
+[ext_resource path="res://assets/sound/sfx/metal_stake.wav" type="AudioStream" id=62]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -86,5 +87,9 @@ speed_scale = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 62 )
+bus = "SFX"
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
