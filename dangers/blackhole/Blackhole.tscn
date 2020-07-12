@@ -297,6 +297,7 @@ anims/default = SubResource( 4 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 242 )
 autoplay = true
+bus = "SFX"
 [connection signal="body_entered" from="PullArea" to="." method="_on_PullArea_body_entered"]
 [connection signal="body_exited" from="PullArea" to="." method="_on_PullArea_body_exited"]
 [connection signal="body_entered" from="DeathArea" to="." method="_on_DeathArea_body_entered"]
