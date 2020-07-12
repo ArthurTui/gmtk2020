@@ -6,6 +6,18 @@ onready var item_spawns = [$ItemSpawns/S1, $ItemSpawns/S2, $ItemSpawns/S3,
 onready var opposite_spawns = [$ItemSpawns/S4, $ItemSpawns/S3, $ItemSpawns/S2,
 		$ItemSpawns/S1]
 
+func _ready():
+# warning-ignore:return_value_discarded
+	$YSort/Player.connect("died", self, "_on_player_died")
+# warning-ignore:return_value_discarded
+	$YSort/Player.connect("update_life", self, "_on_player_update_life")
 
 func set_time_of_day(time:int):
 	bg.frame = time
+
+func _on_player_died():
+	$Lose.play()
+	
+
+func _on_player_update_life(amount):
+	$PlayerHUD.update_life(amount)

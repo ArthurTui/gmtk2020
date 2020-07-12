@@ -5,6 +5,7 @@ signal teleport
 signal add_status
 signal remove_status
 signal died
+signal update_life
 
 onready var status_node = $StatusNode
 onready var sprite = $AnimatedSprite
@@ -175,7 +176,7 @@ func take_damage(amount: float):
 	
 	hp = max(hp - amount, 0)
 	$HP.text = str(ceil(hp))
-	
+	emit_signal("update_life", hp)
 	if hp <= 0:
 		die()
 	else:
