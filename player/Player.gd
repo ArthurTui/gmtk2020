@@ -42,7 +42,7 @@ func _ready():
 		status_array.append(null)
 
 
-func _unhandled_input(event):
+#func _unhandled_input(event):
 #	if event is InputEventKey and event.pressed and event.scancode == KEY_1:
 #		toggle_status(Status.TYPES.SPEEDUP)
 #	elif event is InputEventKey and event.pressed and event.scancode == KEY_2:
