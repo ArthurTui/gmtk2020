@@ -29,6 +29,7 @@ var has_status := []
 var status_array := []
 var hp : float
 var blink_chance := 0.0
+var knockback = Vector2()
 
 #BLACKHOLE
 var blackhole = null
@@ -64,7 +65,7 @@ func _unhandled_input(event):
 
 func _physics_process(dt):
 	if not is_stunned():
-		move(get_input_movement())
+		move(get_input_movement(), dt)
 	
 	if has_status[Status.TYPES.BURNING]:
 		var burn = status_array[Status.TYPES.BURNING]
@@ -135,7 +136,7 @@ func change_animation(anim:String):
 	sprite.play(anim)
 
 
-func move(new_movement:Vector2):
+func move(new_movement:Vector2, dt:float):
 	var acc_factor = ACCELERATION_FACTOR
 	var fric_factor = FRICTION_FACTOR
 	
@@ -163,7 +164,7 @@ func move(new_movement:Vector2):
 	if blackhole:
 		movement = blackhole.pull_player(movement, global_position)
 	
-	movement = move_and_slide(movement)
+	movement = move_and_slide(movement + knockback*dt)
 
 
 func get_width():
@@ -179,6 +180,10 @@ func heal(amount: float):
 
 func _on_teleport():
 	emit_signal("teleport")
+
+func knockback(vec):
+	$Tween.interpolate_property(self, "knockback", vec, Vector2(), .3, Tween.TRANS_QUAD, Tween.EASE_IN)
+	
 
 func take_damage(amount: float):
 	

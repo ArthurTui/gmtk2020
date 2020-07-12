@@ -2,7 +2,9 @@ extends KinematicBody2D
 
 signal get_position
 
-const SPEED = 300
+export var SPEED = 300
+export var STRENGTH = 3000
+export var DAMAGE = 10
 
 var target = null
 
@@ -42,7 +44,6 @@ func _process(delta):
 		if move_amount.length() <= 1:
 			get_new_position()
 
-
 func move_to(orig, final, amount):
 	var difference = (final - orig)
 
@@ -60,3 +61,10 @@ func get_new_position():
 	var y = rand_range(400,500)
 	target = Vector2(x, y)
 	#emit_signal("get_position")
+
+
+func _on_Area2D_body_entered(body):
+	if body is Player:
+		var dir = (body.position - position).normalized()
+		body.knockback(dir * STRENGTH)
+		body.take_damage(DAMAGE)
