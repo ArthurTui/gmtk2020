@@ -6,6 +6,7 @@ signal add_status
 signal remove_status
 
 onready var status_node = $StatusNode
+onready var sprite = $AnimatedSprite
 
 const ACCELERATION_FACTOR = .1
 const FRICTION_FACTOR = .5
@@ -25,6 +26,7 @@ var movement := Vector2.ZERO
 var has_status := []
 var status_array := []
 var hp : float
+var blink_chance := 0.0
 
 #BLACKHOLE
 var blackhole = null
@@ -77,8 +79,10 @@ func update_vision_cone():
 	var angle = (get_global_mouse_position() - global_position).angle() + PI/2
 	$Vision.rotation = angle
 
+
 func toggle_vision_cone():
 	$Vision.visible = not $Vision.visible
+
 
 func get_input_movement() -> Vector2:
 	var move_vec = Vector2.ZERO
@@ -93,10 +97,28 @@ func get_input_movement() -> Vector2:
 	
 	if has_status[Status.TYPES.CONFUSED]:
 		move_vec *= -1
-
+	
 	move_vec = move_vec.normalized() * SPEED
 	
+	animate_movement(move_vec)
+	
 	return move_vec
+
+
+func animate_movement(move_input:Vector2):
+	if move_input == Vector2.ZERO:
+		change_animation("idle")
+	else:
+		change_animation("walk")
+		if move_input.x != 0:
+			sprite.flip_h = move_input.x < 0
+
+
+func change_animation(anim:String):
+	if sprite.is_playing() and sprite.animation.begins_with(anim):
+		return
+	
+	sprite.play(anim)
 
 
 func move(new_movement:Vector2):
@@ -205,3 +227,27 @@ func blackhole_area_entered(bhole):
 
 func blackhole_area_exited():
 	blackhole = null
+
+
+func _on_AnimatedSprite_animation_finished():
+	match sprite.animation:
+		"celebrate":
+			sprite.play("idle")
+		"idle":
+			if blink_chance > randf():
+				blink_chance = 0
+				sprite.play("idle_blink")
+			else:
+				blink_chance += .05
+		"idle_blink":
+			sprite.play("idle")
+		"use_item":
+			sprite.play("idle")
+		"walk":
+			if blink_chance > randf():
+				blink_chance = 0
+				sprite.play("walk_blink")
+			else:
+				blink_chance += .05
+		"walk_blink":
+			sprite.play("walk")
