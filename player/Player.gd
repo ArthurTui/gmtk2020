@@ -29,6 +29,7 @@ var has_status := []
 var status_array := []
 var hp : float
 var blink_chance := 0.0
+var is_dead := false
 var knockback = Vector2()
 
 #BLACKHOLE
@@ -200,6 +201,10 @@ func take_damage(amount: float):
 
 
 func die():
+	if is_dead:
+		return
+	
+	is_dead = true
 	emit_signal("died")
 	queue_free()
 
