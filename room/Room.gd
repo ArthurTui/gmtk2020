@@ -53,6 +53,7 @@ func spawn_danger(amount:int):
 
 
 func _on_player_died():
+	$Die.play()
 	$Lose.play()
 	#get random death sfx
 	randomize()

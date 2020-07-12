@@ -60,6 +60,7 @@ func update_tracks(number):
 			fadeout($TrackFadeIn2)
 			
 func stop_bgm():
+	stop_heartbeat()
 	if $TrackFadeIn1.playing:
 		var fadein = $TrackFadeIn1
 		var fadeout = $TrackFadeOut1
