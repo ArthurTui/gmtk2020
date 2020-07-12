@@ -1,18 +1,28 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/images/room/bg noite.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/room/bg dia.png" type="Texture" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://room/furniture/Rug.tscn" type="PackedScene" id=4]
 [ext_resource path="res://room/Room.gd" type="Script" id=5]
+[ext_resource path="res://room/furniture/Lamp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://room/furniture/TV.tscn" type="PackedScene" id=7]
+[ext_resource path="res://room/furniture/Drawers.tscn" type="PackedScene" id=8]
+[ext_resource path="res://room/furniture/Bed.tscn" type="PackedScene" id=9]
+[ext_resource path="res://room/furniture/SNES.tscn" type="PackedScene" id=10]
+[ext_resource path="res://room/furniture/Plant.tscn" type="PackedScene" id=11]
+[ext_resource path="res://room/furniture/Castle.tscn" type="PackedScene" id=12]
+[ext_resource path="res://room/furniture/Wardrobe.tscn" type="PackedScene" id=13]
+[ext_resource path="res://room/furniture/Sock.tscn" type="PackedScene" id=14]
+[ext_resource path="res://room/furniture/Pizza.tscn" type="PackedScene" id=15]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 50 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 50, 360 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
 "loop": true,
@@ -31,36 +41,66 @@ script = ExtResource( 5 )
 position = Vector2( 640, 212 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Upper"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Lower" type="StaticBody2D" parent="Walls"]
 position = Vector2( 640, 747 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Lower"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Left" type="StaticBody2D" parent="Walls"]
 position = Vector2( 230, 360 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Right" type="StaticBody2D" parent="Walls"]
 position = Vector2( 1030, 360 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Background" type="AnimatedSprite" parent="."]
 position = Vector2( 640, 360 )
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 
 [node name="FloorDecoration" type="Node2D" parent="."]
 
 [node name="Rug" parent="FloorDecoration" instance=ExtResource( 4 )]
 position = Vector2( 618.621, 480.03 )
 
+[node name="Furniture" parent="FloorDecoration" instance=ExtResource( 14 )]
+position = Vector2( 824.487, 575.585 )
+
+[node name="Furniture2" parent="FloorDecoration" instance=ExtResource( 15 )]
+position = Vector2( 328.098, 418.607 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 516.736, 460.855 )
+
+[node name="Furniture" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 365.621, 232.722 )
+
+[node name="Furniture2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 409.474, 268.363 )
+
+[node name="Furniture3" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 513.913, 273.642 )
+
+[node name="Furniture4" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 664.75, 254.954 )
+
+[node name="Furniture5" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 762.152, 276.126 )
+
+[node name="Furniture6" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 942.868, 261.534 )
+
+[node name="Furniture7" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( 345.218, 618.621 )
+
+[node name="Furniture8" parent="YSort" instance=ExtResource( 13 )]
+position = Vector2( 931.082, 466.171 )
