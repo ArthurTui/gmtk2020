@@ -7,6 +7,41 @@ enum States {DAY, NIGHT}
 const TRIGGER_SCENE = preload("res://items/TriggerItem.tscn")
 const SAFE_SCENE = preload("res://items/SafeItem.tscn")
 const PLAYER_SCENE = preload("res://player/Player.tscn")
+
+const LOC_SFX = [
+	[
+		preload("res://assets/sound/sfx/boss_speaks_book1.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_book2.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_book3.wav"),
+	],
+	[
+		preload("res://assets/sound/sfx/boss_speaks_ring1.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_ring2.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_ring3.wav"),
+	],
+	[
+		preload("res://assets/sound/sfx/boss_speaks_badge1.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_badge2.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_badge3.wav"),
+
+	],
+	[
+		preload("res://assets/sound/sfx/boss_speaks_wormhole1.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_wormhole2.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_wormhole3.wav"),
+	],
+	[
+		preload("res://assets/sound/sfx/boss_speaks_matches1.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_matches2.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_matches3.wav"),
+	],
+	[
+		preload("res://assets/sound/sfx/boss_speaks_airplane1.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_airplane2.wav"),
+		preload("res://assets/sound/sfx/boss_speaks_airplane3.wav"),
+	]
+]
+
 const DANGER_AMOUNT = [4, 5, 6, 7, 8, 9]
 const OPPOSITE_INDEX = [3, 2, 1, 0]
 
@@ -63,7 +98,10 @@ func boss_level():
 
 func _on_item_picked_up(type:int):
 	$PickedItem.play()
+	randomize()
+	$Laugh.stream = LOC_SFX[type][randi()%3]
 	$Laugh.play()
+	
 	for trigger in $TriggerItems.get_children():
 		if trigger.type != type:
 			trigger_items.append(trigger.type)
