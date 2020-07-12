@@ -1,5 +1,8 @@
 extends Node2D
 
+const ITEM_WIDTH = 50
+const ITEM_HEIGHT = 50
+
 onready var bg = $Background
 onready var item_spawns = [$ItemSpawns/S1, $ItemSpawns/S2, $ItemSpawns/S3,
 		$ItemSpawns/S4]
