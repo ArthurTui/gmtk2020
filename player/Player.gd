@@ -99,16 +99,9 @@ func get_input_movement() -> Vector2:
 		move_vec += Vector2(1, 0)
 	
 	if move_vec.length() > 0:
-		if has_status[Status.TYPES.SLIPPERY]:
-			$WalkSFX.stop()
-			if not $SlipperySFX.playing:
-				$SlipperySFX.play()
-		else:
-			$SlipperySFX.stop()
-			if not $WalkSFX.playing:
-				$WalkSFX.play()
+		if not $WalkSFX.playing:
+			$WalkSFX.play()
 	else:
-		$SlipperySFX.stop()
 		$WalkSFX.stop()
 	
 	if has_status[Status.TYPES.CONFUSED]:
