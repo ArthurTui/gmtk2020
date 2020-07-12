@@ -18,3 +18,7 @@ func _ready():
 
 func _on_VideoPlayer_finished():
 	Transition.transition_to_scene("res://menus/MainMenu.tscn")
+
+
+func _on_Skip_filled():
+	Transition.transition_to_scene("res://menus/MainMenu.tscn")

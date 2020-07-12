@@ -12,9 +12,13 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	pass
 
 
 func _on_VideoPlayer_finished():
+	Transition.transition_to_scene("res://game/Game.tscn")
+
+
+func _on_Skip_filled():
 	Transition.transition_to_scene("res://game/Game.tscn")
