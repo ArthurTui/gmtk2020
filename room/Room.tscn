@@ -118,7 +118,7 @@ position = Vector2( 931.082, 466.171 )
 position = Vector2( 415.655, 313.057 )
 
 [node name="S2" type="Node2D" parent="ItemSpawns"]
-position = Vector2( 925.954, 322.136 )
+position = Vector2( 898.954, 299.136 )
 
 [node name="S3" type="Node2D" parent="ItemSpawns"]
 position = Vector2( 338.617, 668.245 )

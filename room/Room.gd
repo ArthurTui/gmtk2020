@@ -7,6 +7,7 @@ onready var bg = $Background
 onready var item_spawns = [$ItemSpawns/S1, $ItemSpawns/S2, $ItemSpawns/S3,
 		$ItemSpawns/S4]
 
+const PLAYER_SCENE = preload("res://player/Player.tscn")
 const DANGER_SCENES = [preload("res://dangers/acid/Acid.tscn"),
 		preload("res://dangers/elec_field/EletricField.tscn"),
 		preload("res://dangers/iron_spikes/IronSpikes.tscn"),
