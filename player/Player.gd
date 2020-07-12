@@ -206,6 +206,12 @@ func is_stunned() -> bool:
 	return has_status[Status.TYPES.PETRIFY]
 
 
+func inherit_status(has_status_array:Array):
+	for i in has_status_array.size():
+		if has_status_array[i]:
+			add_status(i)
+
+
 func add_status(type:int):
 	if has_status[type]:
 		return
@@ -249,6 +255,9 @@ func remove_status(status:Status):
 func remove_all_status():
 	for status in status_node.get_children():
 		status.finish()
+	for i in has_status.size():
+		has_status[i] = false
+		status_array[i] = null
 	$Vision.visible = false
 
 

@@ -116,7 +116,6 @@ DAMAGE = 40
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.256071, 0.231694 )
 frames = SubResource( 1 )
-frame = 56
 speed_scale = 4.0
 playing = true
 

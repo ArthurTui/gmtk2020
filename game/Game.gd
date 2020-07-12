@@ -168,6 +168,7 @@ func _on_safe_reached():
 
 func _on_player_death():
 	# RESPAWN
+	var has_status = player.has_status
 	player.queue_free()
 	
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -175,6 +176,7 @@ func _on_player_death():
 	player = PLAYER_SCENE.instance()
 	player.position = respawn_position
 	$Room/YSort.add_child(player)
+	player.inherit_status(has_status)
 	
 # warning-ignore:return_value_discarded
 	player.connect("died", room, "_on_player_died")
