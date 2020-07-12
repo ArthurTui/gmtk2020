@@ -213,14 +213,6 @@ func toggle_status(status_type: int):
 	else:
 		remove_status(status_array[status_type])
 
-
-func add_camera_bounds(left:int, right:int, bottom:int, top:int):
-	$Camera2D.limit_left = left
-	$Camera2D.limit_right = right
-	$Camera2D.limit_bottom = bottom
-	$Camera2D.limit_top = top
-
-
 func blackhole_area_entered(bhole):
 	blackhole = bhole
 

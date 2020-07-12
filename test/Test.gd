@@ -1,28 +1,6 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	
-	#TOP
-	var top = $Scenario/TopWall.rect_position.y
-	
-	#Bottom
-	var bottom = $Scenario/BottomWall.rect_position.y + $Scenario/BottomWall.rect_size.x
-
-	#Left
-	var left = $Scenario/LeftWall.rect_position.x
-	
-	#Right
-	var right = $Scenario/RightWall.rect_position.x + $Scenario/RightWall.rect_size.x
-		
-	$Player.add_camera_bounds(left, right, bottom, top)
-	
+func _ready():	
 # warning-ignore:return_value_discarded
 	$Player.connect("teleport", self, "random_valid_position")
 # warning-ignore:return_value_discarded
