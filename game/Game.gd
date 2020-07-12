@@ -56,8 +56,6 @@ func new_level():
 		boss_level()
 		return
 	
-	room.clear_danger()
-	
 	var trigger_pos = range(4)
 	var items_to_add = min(2, trigger_items.size())
 	
@@ -102,7 +100,10 @@ func _on_item_picked_up(type:int):
 	safe_item.set_type(type)
 	safe_item.connect("reached", self, "_on_safe_reached")
 	
-	room.spawn_danger(DANGER_AMOUNT[level])
+	if trigger_items.size():
+		room.spawn_danger(DANGER_AMOUNT[level])
+	else:
+		room.spawn_blackhole()
 
 
 func _on_safe_reached():
@@ -112,6 +113,7 @@ func _on_safe_reached():
 	player.remove_all_status()
 	level += 1
 	get_tree().call_group("furniture", "set_time_of_day", Furniture.DAY)
+	room.clear_danger()
 	new_level()
 
 

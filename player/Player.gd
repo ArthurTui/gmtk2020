@@ -42,25 +42,25 @@ func _ready():
 		status_array.append(null)
 
 
-func _unhandled_input(event):
-	if event is InputEventKey and event.pressed and event.scancode == KEY_1:
-		toggle_status(Status.TYPES.SPEEDUP)
-	elif event is InputEventKey and event.pressed and event.scancode == KEY_2:
-		toggle_status(Status.TYPES.PETRIFY)
-	elif event is InputEventKey and event.pressed and event.scancode == KEY_3:
-		toggle_status(Status.TYPES.BURNING)
-	elif event is InputEventKey and event.pressed and event.scancode == KEY_4:
-		toggle_status(Status.TYPES.SLIPPERY)
-	elif event is InputEventKey and event.pressed and event.scancode == KEY_5:
-		toggle_status(Status.TYPES.CONFUSED)
-	elif event is InputEventKey and event.pressed and event.scancode == KEY_6:
-		toggle_status(Status.TYPES.SPEEDDOWN)
-	elif event is InputEventKey and event.pressed and event.scancode == KEY_7:
-		toggle_status(Status.TYPES.BLEEDING)
-	elif event is InputEventKey and event.pressed and event.scancode == KEY_8:
-		toggle_status(Status.TYPES.TELEPORT)
-	elif event is InputEventKey and event.pressed and event.scancode == KEY_9:
-		toggle_vision_cone()
+#func _unhandled_input(event):
+#	if event is InputEventKey and event.pressed and event.scancode == KEY_1:
+#		toggle_status(Status.TYPES.SPEEDUP)
+#	elif event is InputEventKey and event.pressed and event.scancode == KEY_2:
+#		toggle_status(Status.TYPES.PETRIFY)
+#	elif event is InputEventKey and event.pressed and event.scancode == KEY_3:
+#		toggle_status(Status.TYPES.BURNING)
+#	elif event is InputEventKey and event.pressed and event.scancode == KEY_4:
+#		toggle_status(Status.TYPES.SLIPPERY)
+#	elif event is InputEventKey and event.pressed and event.scancode == KEY_5:
+#		toggle_status(Status.TYPES.CONFUSED)
+#	elif event is InputEventKey and event.pressed and event.scancode == KEY_6:
+#		toggle_status(Status.TYPES.SPEEDDOWN)
+#	elif event is InputEventKey and event.pressed and event.scancode == KEY_7:
+#		toggle_status(Status.TYPES.BLEEDING)
+#	elif event is InputEventKey and event.pressed and event.scancode == KEY_8:
+#		toggle_status(Status.TYPES.TELEPORT)
+#	elif event is InputEventKey and event.pressed and event.scancode == KEY_9:
+#		toggle_vision_cone()
 
 
 func _physics_process(dt):
@@ -251,6 +251,7 @@ func remove_status(status:Status):
 func remove_all_status():
 	for status in status_node.get_children():
 		status.finish()
+	$Vision.visible = false
 
 
 func toggle_status(status_type: int):

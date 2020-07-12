@@ -7,6 +7,7 @@ onready var bg = $Background
 onready var item_spawns = [$ItemSpawns/S1, $ItemSpawns/S2, $ItemSpawns/S3,
 		$ItemSpawns/S4]
 
+const BLACKHOLE_SCENE = preload("res://dangers/blackhole/Blackhole.tscn")
 const PLAYER_SCENE = preload("res://player/Player.tscn")
 const DANGER_SCENES = [preload("res://dangers/acid/Acid.tscn"),
 		preload("res://dangers/elec_field/EletricField.tscn"),
@@ -35,6 +36,12 @@ func get_item_position(index:int):
 func clear_danger():
 	for child in $Dangers.get_children():
 		child.queue_free()
+
+
+func spawn_blackhole():
+	var bh = BLACKHOLE_SCENE.instance()
+	bh.position = $BlackholePosition.position
+	$Dangers.add_child(bh)
 
 
 func spawn_danger(amount:int):

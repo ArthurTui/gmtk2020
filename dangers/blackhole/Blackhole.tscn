@@ -244,7 +244,7 @@
 [ext_resource path="res://assets/sound/sfx/wormhole.wav" type="AudioStream" id=242]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 350, 220 )
+extents = Vector2( 255, 220 )
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 20.0
