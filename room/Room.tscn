@@ -108,6 +108,7 @@ position = Vector2( 345.218, 618.621 )
 position = Vector2( 931.082, 466.171 )
 
 [node name="ItemSpawns" type="Node2D" parent="."]
+visible = false
 
 [node name="S1" type="Node2D" parent="ItemSpawns"]
 position = Vector2( 415.655, 313.057 )

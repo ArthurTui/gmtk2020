@@ -4,7 +4,7 @@ class_name Status
 signal finished
 
 enum TYPES {NONE, SPEEDUP, PETRIFY, BURNING, SLIPPERY, CONFUSED, SPEEDDOWN,
-			BLEEDING, ACIDBURNING}
+		BLEEDING, ACIDBURNING, TELEPORT, DARKNESS}
 
 export var duration := 0.0
 export(TYPES) var type = 0
