@@ -1,5 +1,6 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
+[ext_resource path="res://assets/sound/sfx/acid_pool.wav" type="AudioStream" id=1]
 [ext_resource path="res://dangers/acid/Acid.gd" type="Script" id=2]
 [ext_resource path="res://assets/images/acid/0059.png" type="Texture" id=3]
 [ext_resource path="res://assets/images/acid/0007.png" type="Texture" id=4]
@@ -75,12 +76,15 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 11
+frame = 52
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PoolVector2Array( -102.773, -61.9043, -60.7068, -97.6208, -1.17932, -110.32, 49.6175, -96.8271, 92.4773, -60.3169, 107.558, -11.9012, 88.5088, 32.546, 46.4427, 66.6751, -1.97302, 76.1996, -59.1194, 62.7066, -99.5982, 27.7838, -113.885, -15.076 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
