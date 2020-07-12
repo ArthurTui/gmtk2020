@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://room/furniture/Furniture.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/furniture/n06_abajuur.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/furniture/06_abajuur.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "day",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "night",
+"speed": 0.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 27, 15 )
+
+[node name="Furniture" type="Node2D" groups=[
+"furniture",
+]]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -43 )
+frames = SubResource( 1 )
+animation = "day"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -43 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 2, 43 )
+shape = SubResource( 2 )
