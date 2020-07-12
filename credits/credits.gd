@@ -31,24 +31,29 @@ var credits = [
 	[ "Game Designer",
 	  "","Cedrik Rocha"],
 	
+	[ "Background Artist",
+	  "","Cristina Sena"],
+		
+	
 	[  "Producer, Writer", 
 		"",
 		"Daniela Reigas" ],
 		
-	
+		[ "2D Game Artist",
+	  "","Licínio Souza"],
 	
 	[ "3D Artist",
 	  "","Cnan0.core"],
 	
-	[ "2D Game Artist",
-	  "","Licínio Souza"],
+
 	
 	[ "Sound Designer",
 	  "","Rodrigo Passos"],
 	
-	[ "Background Artist",
-	  "","Cristina Sena"],
-		
+	
+	[ "Voice Actor",
+	  "","Taneko"],
+	
 	
 	[	
 		"Programming",
