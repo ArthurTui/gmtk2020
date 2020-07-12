@@ -22,7 +22,8 @@ const STATUS = [null,
 		preload("res://status/debuffs/Confused.tscn"),
 		preload("res://status/debuffs/SpeedDown.tscn"),
 		preload("res://status/debuffs/Bleeding.tscn"),
-		preload("res://status/debuffs/AcidBurning.tscn")]
+		preload("res://status/debuffs/AcidBurning.tscn"),
+		preload("res://status/debuffs/Teleport.tscn")]
 
 var movement := Vector2.ZERO
 var has_status := []
@@ -58,7 +59,7 @@ func _unhandled_input(event):
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_7:
 		toggle_status(Status.TYPES.BLEEDING)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_8:
-		emit_signal("teleport")
+		toggle_status(Status.TYPES.TELEPORT)
 	elif event is InputEventKey and event.pressed and event.scancode == KEY_9:
 		toggle_vision_cone()
 
@@ -171,6 +172,8 @@ func heal(amount: float):
 	hp = min(hp + amount, MAX_HP)
 	$HP.text = str(ceil(hp))
 
+func _on_teleport():
+	emit_signal("teleport")
 
 func take_damage(amount: float):
 	
@@ -203,7 +206,12 @@ func add_status(type:int):
 	if type == Status.TYPES.DARKNESS:
 		toggle_vision_cone()
 	elif type == Status.TYPES.TELEPORT:
-		pass
+		var status : Status = STATUS[type].instance()
+	# warning-ignore:return_value_discarded
+		status.connect("finished", self, "remove_status", [status])
+		status.connect("teleport", self, "_on_teleport")
+		status_node.add_child(status)
+		status_array[type] = status
 	else:
 		var status : Status = STATUS[type].instance()
 	# warning-ignore:return_value_discarded

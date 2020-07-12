@@ -17,9 +17,29 @@ var curr_triggers := {} # item_type:position_index
 func _ready():
 	player = $Room/YSort/Player
 	trigger_items = range(TriggerItem.Types.size())
+	# warning-ignore:return_value_discarded
+	player.connect("teleport", self, "random_valid_position")
 	
 	new_level()
 
+#Get a random valid position to position player
+func random_valid_position():
+	var pos = Vector2()
+	while(true):
+		#Get random position inside room
+		randomize()
+		pos.x = rand_range($Room/Walls/Left.position.x + player.get_width()/2,
+						   $Room/Walls/Right.position.x - player.get_width()/2)
+		pos.y = rand_range($Room/Walls/Upper.position.y + player.get_height()/2,
+						   $Room/Walls/Lower.position.y - player.get_height()/2)
+		
+		var transform = Transform2D()
+		transform.translated(pos)
+		if not player.test_move(transform, Vector2()):
+			break
+
+	#Teleport player
+	player.position = pos
 
 func new_level():
 	if not trigger_items.size():
