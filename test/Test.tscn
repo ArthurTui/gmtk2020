@@ -35,16 +35,12 @@ __meta__ = {
 
 [node name="Dangers" type="Node2D" parent="."]
 
-[node name="IronSpikes" parent="Dangers" instance=ExtResource( 4 )]
-position = Vector2( 556.741, 395.107 )
-scale = Vector2( 0.351099, 0.352814 )
-
 [node name="IronSpikes2" parent="Dangers" instance=ExtResource( 4 )]
 position = Vector2( 749.805, 127.961 )
 scale = Vector2( 0.351099, 0.352814 )
 
 [node name="Lava" parent="Dangers" instance=ExtResource( 5 )]
-position = Vector2( 293.668, 701.208 )
+position = Vector2( 575.35, 392.557 )
 scale = Vector2( 0.407056, 0.403734 )
 
 [node name="Lava2" parent="Dangers" instance=ExtResource( 5 )]
@@ -63,7 +59,7 @@ scale = Vector2( 0.399572, 0.399724 )
 position = Vector2( 972.979, 709.935 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 38.956, 68.9221 )
+position = Vector2( 6.86646e-05, 56.9356 )
 
 [node name="Objects" type="Node" parent="."]
 
