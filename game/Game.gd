@@ -109,7 +109,8 @@ func boss_level():
 
 
 func gameover():
-	pass
+	AudioManager.stop_bgm()
+	Transition.transition_to_scene("res://intro/ending.tscn")
 
 
 func _on_item_picked_up(type:int):
