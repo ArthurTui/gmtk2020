@@ -69,6 +69,7 @@ func stop_bgm():
 		fadeout.volume_db = fadein.volume_db
 		fadeout.stream = fadein.stream
 		fadeout.play(pos)
+		fadeout(fadeout)
 	if $TrackFadeIn2.playing:
 		var fadein = $TrackFadeIn2
 		var fadeout = $TrackFadeOut2
@@ -77,6 +78,7 @@ func stop_bgm():
 		fadeout.volume_db = fadein.volume_db
 		fadeout.stream = fadein.stream
 		fadeout.play(pos)
+		fadeout(fadeout)
 
 func play_heartbeat():
 	if not $HeartBeat.playing:

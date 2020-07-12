@@ -1,5 +1,7 @@
 extends Control
 
+func _ready():
+	AudioManager.play_bgm("intro", 1)
 
 func _on_NewGame_pressed():
 	Transition.transition_to_scene("res://game/Game.tscn")
