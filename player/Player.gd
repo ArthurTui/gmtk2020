@@ -240,6 +240,11 @@ func remove_status(status:Status):
 	emit_signal("remove_status", status.name)
 
 
+func remove_all_status():
+	for status in status_node.get_children():
+		status.finish()
+
+
 func toggle_status(status_type: int):
 	if not has_status[status_type]:
 		add_status(status_type)

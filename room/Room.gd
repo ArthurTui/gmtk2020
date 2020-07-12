@@ -6,8 +6,6 @@ const ITEM_HEIGHT = 50
 onready var bg = $Background
 onready var item_spawns = [$ItemSpawns/S1, $ItemSpawns/S2, $ItemSpawns/S3,
 		$ItemSpawns/S4]
-onready var opposite_spawns = [$ItemSpawns/S4, $ItemSpawns/S3, $ItemSpawns/S2,
-		$ItemSpawns/S1]
 
 const DANGER_SCENES = [preload("res://dangers/acid/Acid.tscn"),
 		preload("res://dangers/elec_field/EletricField.tscn"),
@@ -33,8 +31,9 @@ func get_item_position(index:int):
 	return item_spawns[index].position
 
 
-func get_opposite_position(index:int):
-	return opposite_spawns[index].position
+func clear_danger():
+	for child in $Dangers.get_children():
+		child.queue_free()
 
 
 func spawn_danger(amount:int):
