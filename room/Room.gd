@@ -6,6 +6,13 @@ onready var item_spawns = [$ItemSpawns/S1, $ItemSpawns/S2, $ItemSpawns/S3,
 onready var opposite_spawns = [$ItemSpawns/S4, $ItemSpawns/S3, $ItemSpawns/S2,
 		$ItemSpawns/S1]
 
+const DANGER_SCENES = [preload("res://dangers/acid/Acid.tscn"),
+		preload("res://dangers/elec_field/EletricField.tscn"),
+		preload("res://dangers/iron_spikes/IronSpikes.tscn"),
+		preload("res://dangers/lava/Lava.tscn"),
+		preload("res://dangers/toxic_fumes/ToxicFumes.tscn")]
+
+
 func _ready():
 # warning-ignore:return_value_discarded
 	$YSort/Player.connect("died", self, "_on_player_died")
@@ -25,6 +32,21 @@ func get_item_position(index:int):
 
 func get_opposite_position(index:int):
 	return opposite_spawns[index].position
+
+
+func spawn_danger(amount:int):
+	var random_danger = randi() % DANGER_SCENES.size()
+	var positions := []
+	
+	for child in $DangerSpawns.get_children():
+		positions.append(child.position)
+	
+	positions.shuffle()
+	
+	for i in amount:
+		var danger = DANGER_SCENES[random_danger].instance()
+		$Dangers.add_child(danger)
+		danger.position = positions[i]
 
 
 func _on_player_died():

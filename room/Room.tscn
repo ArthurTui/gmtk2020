@@ -73,6 +73,7 @@ position = Vector2( 640, 360 )
 frames = SubResource( 3 )
 
 [node name="FloorDecoration" type="Node2D" parent="."]
+visible = false
 
 [node name="Rug" parent="FloorDecoration" instance=ExtResource( 4 )]
 position = Vector2( 618.621, 480.03 )
@@ -113,7 +114,6 @@ position = Vector2( 345.218, 618.621 )
 position = Vector2( 931.082, 466.171 )
 
 [node name="ItemSpawns" type="Node2D" parent="."]
-visible = false
 
 [node name="S1" type="Node2D" parent="ItemSpawns"]
 position = Vector2( 415.655, 313.057 )
@@ -126,6 +126,52 @@ position = Vector2( 338.617, 668.245 )
 
 [node name="S4" type="Node2D" parent="ItemSpawns"]
 position = Vector2( 928.951, 665.248 )
+
+[node name="DangerSpawns" type="Node2D" parent="."]
+
+[node name="S1" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 351.533, 417.475 )
+
+[node name="S2" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 329.505, 511.889 )
+
+[node name="S3" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 423.892, 420.334 )
+
+[node name="S4" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 425.78, 517.553 )
+
+[node name="S5" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 535.269, 347.655 )
+
+[node name="S6" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 541.876, 443.93 )
+
+[node name="S7" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 547.539, 535.486 )
+
+[node name="S8" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 513.56, 643.088 )
+
+[node name="S9" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 667.411, 555.308 )
+
+[node name="S10" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 707.054, 666.685 )
+
+[node name="S11" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 821.263, 546.813 )
+
+[node name="S12" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 737.258, 462.808 )
+
+[node name="S13" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 668.355, 361.814 )
+
+[node name="S14" type="Node2D" parent="DangerSpawns"]
+position = Vector2( 800.498, 353.319 )
+
+[node name="Dangers" type="Node2D" parent="."]
 
 [node name="PlayerHUD" parent="." instance=ExtResource( 16 )]
 

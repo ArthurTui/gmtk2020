@@ -228,6 +228,9 @@ func add_status(type:int):
 
 
 func remove_status(status:Status):
+	if not status or not is_instance_valid(status):
+		return
+	
 	has_status[status.type] = false
 	status_array[status.type] = null
 	status_node.remove_child(status)

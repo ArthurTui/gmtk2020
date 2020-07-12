@@ -6,15 +6,19 @@ enum States {DAY, NIGHT}
 
 const TRIGGER_SCENE = preload("res://items/TriggerItem.tscn")
 const SAFE_SCENE = preload("res://items/SafeItem.tscn")
+const DANGER_AMOUNT = [3, 4, 5, 6, 7]
 
 var curr_state : int
 var player : Player
 var safe_pos : Vector2
 var trigger_items : Array
 var curr_triggers := {} # item_type:position_index
+var level := 0
 
 
 func _ready():
+	randomize()
+	
 	player = $Room/YSort/Player
 	trigger_items = range(TriggerItem.Types.size())
 	# warning-ignore:return_value_discarded
@@ -75,4 +79,17 @@ func _on_item_picked_up(type:int):
 	
 	get_tree().call_group("furniture", "set_time_of_day", Furniture.NIGHT)
 	
+	var safe_item = SAFE_SCENE.instance()
+	$SafeItems.add_child(safe_item)
+	safe_item.position = room.get_opposite_position(curr_triggers[type])
+	safe_item.set_type(type)
+	safe_item.connect("reached", self, "_on_safe_reached")
 	
+	room.spawn_danger(DANGER_AMOUNT[level])
+
+
+func _on_safe_reached():
+	for safe in $SafeItems.get_children():
+		safe.queue_free()
+	
+	level += 1
