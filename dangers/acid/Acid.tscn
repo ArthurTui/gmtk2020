@@ -76,7 +76,7 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 36
+frame = 46
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -86,5 +86,6 @@ polygon = PoolVector2Array( -102.773, -61.9043, -60.7068, -97.6208, -1.17932, -1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -13.126
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

@@ -4,6 +4,7 @@ class_name Player
 signal teleport
 signal add_status
 signal remove_status
+signal died
 
 onready var status_node = $StatusNode
 onready var sprite = $AnimatedSprite
@@ -149,6 +150,11 @@ func move(new_movement:Vector2):
 	if blackhole:
 		movement = blackhole.pull_player(movement, global_position)
 	
+	if movement.length() > .1:
+		if not $WalkSFX.playing:
+			$WalkSFX.play()
+	else:
+		$WalkSFX.stop()
 	movement = move_and_slide(movement)
 
 
@@ -166,14 +172,19 @@ func heal(amount: float):
 
 
 func take_damage(amount: float):
+	
 	hp = max(hp - amount, 0)
 	$HP.text = str(ceil(hp))
 	
 	if hp <= 0:
 		die()
+	else:
+		if not $DamageSFX.playing:
+			$DamageSFX.play()
 
 
 func die():
+	emit_signal("died")
 	queue_free()
 
 
