@@ -94,6 +94,7 @@ func new_level():
 
 
 func boss_level():
+	AudioManager.play_bgm("boss", 2)
 	var boss = BOSS_SCENE.instance()
 	room.add_child(boss)
 	boss.position = $Room/BlackholePosition.position
