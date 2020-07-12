@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boss_speaks_var16.wav-8d00a3132a3133b1ec6b02fed4bd3571.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/boss_speaks_var16.wav"
+dest_files=[ "res://.import/boss_speaks_var16.wav-8d00a3132a3133b1ec6b02fed4bd3571.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
