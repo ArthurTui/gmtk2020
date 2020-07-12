@@ -17,6 +17,10 @@ func set_time_of_day(time:int):
 
 func _on_player_died():
 	$Lose.play()
+	#get random death sfx
+	randomize()
+	var n = randi()%$PlayerDeath.get_child_count() + 1
+	get_node("PlayerDeath/AudioStreamPlayer" + str(n)).play()
 	
 
 func _on_player_update_life(amount):

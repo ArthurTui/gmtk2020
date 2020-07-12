@@ -58,7 +58,7 @@
 [ext_resource path="res://assets/images/elec/0073.png" type="Texture" id=56]
 [ext_resource path="res://assets/images/elec/0074.png" type="Texture" id=57]
 [ext_resource path="res://assets/images/elec/0072.png" type="Texture" id=58]
-[ext_resource path="res://assets/sound/sfx/peacockscream.wav" type="AudioStream" id=59]
+[ext_resource path="res://assets/sound/sfx/electric_shock.wav" type="AudioStream" id=59]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -82,7 +82,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 1.00257, 0.979192 )
 frames = SubResource( 1 )
-frame = 22
+frame = 11
 speed_scale = 3.0
 playing = true
 

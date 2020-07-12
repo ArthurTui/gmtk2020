@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/images/room/bg noite.png" type="Texture" id=1]
 [ext_resource path="res://assets/images/room/bg dia.png" type="Texture" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://room/furniture/Pizza.tscn" type="PackedScene" id=15]
 [ext_resource path="res://player/PlayerHUD.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/sound/sfx/lose.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/sound/sfx/player_diesth_boss_sepaks_var3.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/sound/sfx/player_diesth_boss_sepaks_var2.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/sound/sfx/player_diesth_boss_sepaks_var1.wav" type="AudioStream" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 50 )
@@ -128,3 +131,12 @@ position = Vector2( 928.951, 665.248 )
 stream = ExtResource( 17 )
 
 [node name="PlayerDeath" type="Node" parent="."]
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="PlayerDeath"]
+stream = ExtResource( 20 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="PlayerDeath"]
+stream = ExtResource( 19 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="PlayerDeath"]
+stream = ExtResource( 18 )
