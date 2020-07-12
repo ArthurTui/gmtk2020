@@ -57,6 +57,7 @@ var safe_item_index := 0
 
 
 func _ready():
+	AudioManager.update_tracks(1)
 	randomize()
 	
 	player = $Room/YSort/Player
@@ -125,6 +126,7 @@ func _on_item_picked_up(type:int):
 	respawn_position = player.position
 	
 	get_tree().call_group("furniture", "set_time_of_day", Furniture.NIGHT)
+	AudioManager.update_tracks(2)
 	
 	safe_item_index = OPPOSITE_INDEX[curr_triggers[type]]
 	
@@ -154,6 +156,7 @@ func _on_safe_reached():
 	level += 1
 	if trigger_items.size():
 		get_tree().call_group("furniture", "set_time_of_day", Furniture.DAY)
+		AudioManager.update_tracks(1)
 	room.clear_danger()
 	new_level()
 

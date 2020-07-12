@@ -44,14 +44,14 @@ func fadeout(player):
 
 func update_tracks(number):
 	if number == 2:
-		if not $TrackFadeIn1.playing:
+		if not $TrackFadeIn1.playing or $TrackFadeIn1.volume_db == MUTE_DB:
 			fadein($TrackFadeIn1)
-		if not $TrackFadeIn2.playing:
+		if not $TrackFadeIn2.playing or $TrackFadeIn2.volume_db == MUTE_DB:
 			fadein($TrackFadeIn2)
 	elif number == 1:
-		if not $TrackFadeIn1.playing:
+		if not $TrackFadeIn1.playing or $TrackFadeIn1.volume_db == MUTE_DB:
 			fadein($TrackFadeIn1)
-		if $TrackFadeIn2.playing:
+		if $TrackFadeIn2.playing or $TrackFadeIn2.volume_db == REGULAR_DB:
 			fadeout($TrackFadeIn2)
 	elif number == 0:
 		if $TrackFadeIn1.playing:
