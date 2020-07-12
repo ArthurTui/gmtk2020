@@ -213,6 +213,7 @@ func add_status(type:int):
 		var status : Status = STATUS[type].instance()
 	# warning-ignore:return_value_discarded
 		status.connect("finished", self, "remove_status", [status])
+# warning-ignore:return_value_discarded
 		status.connect("teleport", self, "_on_teleport")
 		status_node.add_child(status)
 		status_array[type] = status
