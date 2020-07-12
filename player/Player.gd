@@ -151,9 +151,16 @@ func move(new_movement:Vector2):
 		movement = blackhole.pull_player(movement, global_position)
 	
 	if movement.length() > .1:
-		if not $WalkSFX.playing:
-			$WalkSFX.play()
+		if has_status[Status.TYPES.SLIPPERY]:
+			$WalkSFX.stop()
+			if not $SlipperySFX.playing:
+				$SlipperySFX.play()
+		else:
+			$SlipperySFX.stop()
+			if not $WalkSFX.playing:
+				$WalkSFX.play()
 	else:
+		$SlipperySFX.stop()
 		$WalkSFX.stop()
 	movement = move_and_slide(movement)
 

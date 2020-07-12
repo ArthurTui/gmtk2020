@@ -137,7 +137,7 @@ script = ExtResource( 1 )
 position = Vector2( 0, -204.544 )
 scale = Vector2( 1.46027, 2.11204 )
 frames = SubResource( 1 )
-frame = 15
+frame = 12
 speed_scale = 4.0
 playing = true
 
@@ -149,8 +149,10 @@ shape = SubResource( 2 )
 [node name="Loop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 47 )
 volume_db = -15.0
+bus = "SFX"
 
 [node name="Burst" type="AudioStreamPlayer" parent="."]
 stream = SubResource( 3 )
+bus = "SFX"
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
