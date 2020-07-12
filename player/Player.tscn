@@ -29,27 +29,27 @@ region = Rect2( 612, 153, 153, 153 )
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 1071, 153, 153, 153 )
+region = Rect2( 459, 0, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 0, 306, 153, 153 )
+region = Rect2( 765, 0, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 153, 306, 153, 153 )
+region = Rect2( 0, 0, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 306, 306, 153, 153 )
+region = Rect2( 153, 0, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 459, 306, 153, 153 )
+region = Rect2( 306, 0, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
@@ -59,57 +59,57 @@ region = Rect2( 918, 0, 153, 153 )
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 153, 153 )
+region = Rect2( 0, 153, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 153, 0, 153, 153 )
+region = Rect2( 153, 153, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 306, 0, 153, 153 )
+region = Rect2( 306, 153, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 459, 0, 153, 153 )
+region = Rect2( 1071, 153, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=15]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 765, 0, 153, 153 )
+region = Rect2( 0, 306, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 153, 153 )
+region = Rect2( 153, 306, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 153, 0, 153, 153 )
+region = Rect2( 306, 306, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 306, 0, 153, 153 )
+region = Rect2( 459, 306, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 0, 153, 153, 153 )
+region = Rect2( 0, 0, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 153, 153, 153, 153 )
+region = Rect2( 153, 0, 153, 153 )
 
 [sub_resource type="AtlasTexture" id=21]
 flags = 4
 atlas = ExtResource( 4 )
-region = Rect2( 306, 153, 153, 153 )
+region = Rect2( 306, 0, 153, 153 )
 
 [sub_resource type="SpriteFrames" id=22]
 animations = [ {
@@ -123,9 +123,14 @@ animations = [ {
 "name": "use_item",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
-"loop": false,
-"name": "celebrate",
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "idle_blink",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "walk",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 10 ) ],
@@ -135,27 +140,22 @@ animations = [ {
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
-"name": "walk",
+"name": "walk_item",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 14 ), SubResource( 15 ) ],
-"loop": true,
-"name": "idle_blink",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "run_fast",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
-"loop": true,
-"name": "walk_blink",
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "celebrate",
 "speed": 15.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
 "loop": true,
-"name": "walk_item",
+"name": "walk_blink",
 "speed": 15.0
 } ]
 
@@ -201,19 +201,6 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 23 )
-
-[node name="HP" type="Label" parent="."]
-margin_left = -30.7728
-margin_top = 35.2182
-margin_right = 32.2272
-margin_bottom = 54.2182
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "gambino"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Vision" type="Node2D" parent="."]
 visible = false

@@ -37,7 +37,6 @@ var blackhole = null
 
 func _ready():
 	hp = MAX_HP
-	$HP.text = str(ceil(hp))
 	for i in Status.TYPES.size():
 		has_status.append(false)
 		status_array.append(null)
@@ -170,7 +169,6 @@ func get_height():
 
 func heal(amount: float):
 	hp = min(hp + amount, MAX_HP)
-	$HP.text = str(ceil(hp))
 
 func _on_teleport():
 	emit_signal("teleport")
@@ -178,7 +176,6 @@ func _on_teleport():
 func take_damage(amount: float):
 	
 	hp = max(hp - amount, 0)
-	$HP.text = str(ceil(hp))
 	emit_signal("update_life", hp)
 	if hp <= 0:
 		die()
